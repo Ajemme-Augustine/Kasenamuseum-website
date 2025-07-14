@@ -1,0 +1,59 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --gold: #D4AF37;
+    --gold-light: #E6C567;
+    --gold-dark: #B8860B;
+    /* ... ALL OTHER CSS VARIABLES ... */
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+    transition: background 0.8s ease;
+}
+
+/* ... ALL OTHER CSS RULES ... */
+
+/* Add this at the end */
+body.home-bg {
+    background: linear-gradient(135deg, var(--earth-dark) 0%, var(--sunset) 100%);
+    color: var(--ivory);
+}
+
+body.exhibits-bg {
+    background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+}
+
+body.sites-bg {
+    background: linear-gradient(135deg, #1a5276 0%, #1e8449 100%);
+}
+
+body.hotels-bg {
+    background: linear-gradient(135deg, #7e5109 0%, #b7950b 100%);
+}
+
+body.transport-bg {
+    background: linear-gradient(135deg, #1a5276 0%, #76d7c4 100%);
+}
+
+body.directions-bg {
+    background: linear-gradient(135deg, #1a5276 0%, #76d7c4 100%);
+}
+
+body.about-bg {
+    background: linear-gradient(135deg, #6c3483 0%, #af7ac5 100%);
+}
+
+body.contact-bg {
+    background: linear-gradient(135deg, #7e5109 0%, #b7950b 100%);
+}

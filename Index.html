@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasena Heritage Museum | Ghana</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="home-bg">
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo" id="homeLink">
+                <div class="logo-img">
+                    <i class="fas fa-landmark" style="font-size: 3rem; color: var(--gold); padding: 10px;"></i>
+                </div>
+                <div class="logo-text">Kasena Museum</div>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="exhibits.html" class="nav-link">Cultural Exhibits</a></li>
+                    <li><a href="sites.html" class="nav-link">Tourist Sites</a></li>
+                    <li><a href="hotels.html" class="nav-link">Hotels</a></li>
+                    <li><a href="transport.html" class="nav-link">Transport</a></li>
+                    <li><a href="directions.html" class="nav-link">Directions</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page Content -->
+    <div id="home" class="page-container active-page">
+        <section class="hero">
+            <div class="arch-left architecture"></div>
+            <div class="arch-right architecture"></div>
+            <div class="pattern"></div>
+            
+            <div class="container hero-content">
+                <h1>Discover the Rich Heritage of the Kasena People</h1>
+                <p>Step into our virtual museum to explore the ancient traditions, art, and cultural sites of the Kasena people of Northern Ghana.</p>
+                <a href="exhibits.html" class="hero-btn" id="exploreBtn">Explore Cultural Heritage</a>
+            </div>
+        </section>
+
+        <main class="container">
+            <h2 class="section-title">Cultural Exhibits</h2>
+            
+            <div class="exhibits">
+                <!-- Exhibit Cards -->
+                <div class="exhibit-card">
+                    <div class="exhibit-img">
+                        <img src="https://media.istockphoto.com/id/2222926491/photo/traditional-fortified-tata-somba-house-of-tamberma-people-in-koutammakou-also-known-as-the.jpg" alt="Traditional Architecture">
+                    </div>
+                    <div class="exhibit-content">
+                        <h3>Traditional Architecture</h3>
+                        <p>Explore the unique architectural design of Kasena homes featuring concentric circular compounds with intricate wall motifs symbolizing protection and ancestral wisdom.</p>
+                        <a href="exhibits.html" class="exhibit-btn">Explore</a>
+                    </div>
+                </div>
+                
+                <!-- Other exhibit cards -->
+            </div>
+
+            <!-- Tourist Sites Preview -->
+            <div class="tourist-sites">
+                <h2 class="section-title">Paga Tourist Sites</h2>
+                <!-- Site card content -->
+            </div>
+            
+            <!-- Transport Preview -->
+            <div class="tourist-sites" style="margin-top: 40px;">
+                <h2 class="section-title">Transportation Services</h2>
+                <!-- Transport content -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <!-- Footer content -->
+    </footer>
+
+    <!-- Hotel Booking Modal -->
+    <div id="hotelBookingModal" class="modal">
+        <!-- Modal content -->
+    </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&libraries=&v=weekly" defer></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
