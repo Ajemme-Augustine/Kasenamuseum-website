@@ -1,0 +1,3107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasena Heritage Museum | Ghana</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&libraries=&v=weekly" defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #E6C567;
+            --gold-dark: #B8860B;
+            --earth: #8B4513;
+            --earth-light: #A0522D;
+            --earth-dark: #5D2906;
+            --clay: #CD5C5C;
+            --clay-light: #E9967A;
+            --sand: #F4A460;
+            --ivory: #FDF5E6;
+            --shadow: rgba(0, 0, 0, 0.6);
+            --water: #5F9EA0;
+            --sunset: #E25822;
+            --savannah: #8A9A5B;
+            --sky: #87CEEB;
+            --rich-purple: #6A0DAD;
+            --deep-blue: #1E3A8A;
+            --vibrant-green: #3A8E3D;
+            --terracotta: #E2725B;
+            --text-dark: #333;
+            --text-light: #f8f8f8;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+            transition: background 0.8s ease;
+        }
+
+        /* Traditional pattern overlay */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(180, 120, 50, 0.1) 1px, transparent 1px),
+                radial-gradient(circle at 90% 80%, rgba(180, 120, 50, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Unique page backgrounds */
+        body.home-bg {
+            background: linear-gradient(135deg, var(--earth-dark) 0%, var(--sunset) 100%);
+            color: var(--ivory);
+        }
+        
+        body.exhibits-bg {
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            color: var(--text-light);
+        }
+        
+        body.sites-bg {
+            background: linear-gradient(135deg, #1a5276 0%, #1e8449 100%);
+            color: var(--text-light);
+        }
+        
+        body.hotels-bg {
+            background: linear-gradient(135deg, #7e5109 0%, #b7950b 100%);
+            color: var(--text-light);
+        }
+        
+        body.transport-bg {
+            background: linear-gradient(135deg, #1a5276 0%, #76d7c4 100%);
+            color: var(--text-light);
+        }
+        
+        body.directions-bg {
+            background: linear-gradient(135deg, #1a5276 0%, #76d7c4 100%);
+            color: var(--text-light);
+        }
+        
+        body.about-bg {
+            background: linear-gradient(135deg, #6c3483 0%, #af7ac5 100%);
+            color: var(--text-light);
+        }
+        
+        body.contact-bg {
+            background: linear-gradient(135deg, #7e5109 0%, #b7950b 100%);
+            color: var(--text-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Page container for multi-page layout */
+        .page-container {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+            min-height: 70vh;
+        }
+        
+        .active-page {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header Styles */
+        header {
+            padding: 15px 0;
+            border-bottom: 2px solid var(--gold);
+            position: relative;
+            background: rgba(93, 41, 6, 0.8);
+            backdrop-filter: blur(3px);
+            z-index: 10;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            background: rgba(93, 41, 6, 0.4);
+            padding: 8px 15px;
+            border-radius: 8px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 100;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .logo:hover {
+            background: rgba(93, 41, 6, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        .logo-img {
+            height: 70px;
+            width: auto;
+            margin-right: 15px;
+            border-radius: 4px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .logo-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+        }
+        
+        .logo-text {
+            font-family: 'Cinzel', serif;
+            font-size: 2.1rem;
+            color: var(--gold);
+            text-shadow: 2px 2px 6px var(--shadow);
+            letter-spacing: 2px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover .logo-text {
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--ivory);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        nav a:hover {
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.3);
+        }
+
+        nav a.active {
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.3);
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            color: var(--gold);
+            text-shadow: 3px 3px 6px var(--shadow);
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: var(--ivory);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--earth-dark);
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .hero-btn:hover {
+            background: transparent;
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        /* Architectural elements */
+        .architecture {
+            position: absolute;
+            z-index: 1;
+            opacity: 0.7;
+        }
+
+        .arch-left {
+            left: 0;
+            bottom: 0;
+            width: 200px;
+            height: 300px;
+            background: linear-gradient(to right, var(--earth-dark), var(--earth-light));
+            clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
+        }
+
+        .arch-right {
+            right: 0;
+            top: 0;
+            width: 200px;
+            height: 300px;
+            background: linear-gradient(to left, var(--earth-dark), var(--earth-light));
+            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .pattern {
+            position: absolute;
+            width: 100%;
+            height: 80px;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--gold),
+                var(--gold) 10px,
+                var(--earth-dark) 10px,
+                var(--earth-dark) 20px
+            );
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Museum Sections */
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            text-align: center;
+            margin: 60px 0 40px;
+            position: relative;
+            text-shadow: 2px 2px 4px var(--shadow);
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+            margin: 15px auto;
+            border-radius: 3px;
+        }
+
+        /* Exhibit Grid */
+        .exhibits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px 0 60px;
+        }
+
+        .exhibit-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            border: 1px solid var(--gold-light);
+            backdrop-filter: blur(5px);
+        }
+
+        .exhibit-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+        }
+
+        .exhibit-img {
+            width: 100%;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .exhibit-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .exhibit-card:hover .exhibit-img img {
+            transform: scale(1.05);
+        }
+
+        .exhibit-content {
+            padding: 20px;
+        }
+
+        .exhibit-content h3 {
+            font-size: 1.5rem;
+            color: var(--gold-light);
+            margin-bottom: 10px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .exhibit-content p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .exhibit-btn {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            border: 2px solid var(--gold);
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .exhibit-btn:hover {
+            background: var(--gold);
+            color: var(--earth-dark);
+        }
+
+        /* Tourist Sites Section */
+        .tourist-sites {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 60px 0;
+            border: 2px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tourist-sites::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23D4AF37" stroke-width="1" stroke-dasharray="5,5" opacity="0.2"/></svg>');
+            z-index: -1;
+        }
+
+        .site-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--gold);
+        }
+
+        .site-header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .site-icon {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-right: 15px;
+        }
+
+        .site-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+        }
+
+        .site-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+        }
+
+        .site-image {
+            flex: 1;
+            min-width: 300px;
+            min-height: 300px;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .site-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .site-card:hover .site-image img {
+            transform: scale(1.05);
+        }
+
+        .site-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .site-info p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .site-info ul {
+            margin: 15px 0 20px 25px;
+        }
+
+        .site-info li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .site-info li::before {
+            content: "•";
+            color: var(--gold);
+            font-size: 1.5rem;
+            position: absolute;
+            left: -20px;
+            top: -5px;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 60px 0;
+            border: 2px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--gold-light);
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--gold);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold-light);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--gold);
+            color: var(--earth-dark);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 20px auto 0;
+            border: 2px solid var(--gold);
+        }
+
+        .submit-btn:hover {
+            background: transparent;
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        /* About Page */
+        .about-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 60px 0;
+            border: 2px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-light);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border: 2px solid var(--gold);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Mission Section */
+        .mission {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .mission-statement {
+            font-size: 1.4rem;
+            font-style: italic;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            padding: 30px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--gold);
+            position: relative;
+        }
+
+        .mission-statement::before,
+        .mission-statement::after {
+            content: """;
+            font-size: 4rem;
+            color: var(--gold);
+            position: absolute;
+            opacity: 0.3;
+        }
+
+        .mission-statement::before {
+            top: -10px;
+            left: 10px;
+        }
+
+        .mission-statement::after {
+            bottom: -40px;
+            right: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(93, 41, 6, 0.95);
+            padding: 40px 0 20px;
+            border-top: 2px solid var(--gold);
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+            color: var(--ivory);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            color: var(--earth-dark);
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            background: var(--ivory);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--gold-light);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Navigation */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--ivory);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 100;
+        }
+
+        /* NEW PAGES STYLES */
+        
+        /* Maps Page */
+        .map-container {
+            height: 600px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 3px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .directions-controls {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(93, 41, 6, 0.85);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 100;
+            max-width: 350px;
+            border: 2px solid var(--gold);
+        }
+        
+        .directions-controls h3 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-family: 'Cinzel', serif;
+        }
+        
+        .transport-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .transport-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 25px;
+            border: 2px solid var(--gold-light);
+            transition: all 0.3s ease;
+        }
+        
+        .transport-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+        
+        .transport-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .transport-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-right: 15px;
+        }
+        
+        .transport-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.8rem;
+        }
+        
+        .transport-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 10px 0;
+        }
+        
+        .transport-details {
+            margin: 15px 0;
+            line-height: 1.7;
+        }
+        
+        .booking-form {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid var(--gold);
+            margin-top: 30px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .booking-summary {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid var(--gold);
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .summary-total {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--gold);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* Hotel Card Styles */
+        .hotel-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 40px;
+            border: 1px solid var(--gold-light);
+            backdrop-filter: blur(5px);
+        }
+        
+        .hotel-img {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .hotel-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .hotel-card:hover .hotel-img img {
+            transform: scale(1.05);
+        }
+        
+        .hotel-content {
+            padding: 25px;
+        }
+        
+        .hotel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .hotel-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+        }
+        
+        .hotel-rating {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+        
+        .hotel-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 10px 0;
+        }
+        
+        .hotel-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .feature i {
+            color: var(--gold);
+        }
+        
+        /* NEW: Room Selection Styles */
+        .room-selection {
+            margin: 20px 0;
+            border: 1px solid var(--gold-light);
+            border-radius: 8px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .room-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+        
+        .room-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .room-option {
+            flex: 1;
+            min-width: 120px;
+            border: 1px solid var(--gold-light);
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .room-option:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        .room-option.selected {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+        
+        .room-type {
+            font-weight: 600;
+            color: var(--gold-light);
+            margin-bottom: 5px;
+        }
+        
+        .room-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        
+        .room-features {
+            font-size: 0.8rem;
+            margin-top: 8px;
+            color: var(--ivory);
+            opacity: 0.8;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            overflow: auto;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: rgba(93, 41, 6, 0.9);
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            color: var(--ivory);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--gold);
+        }
+        
+        /* NEW: Exhibit Gallery Styles */
+        .exhibit-gallery {
+            display: none;
+            padding: 20px 0;
+        }
+        
+        .gallery-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .gallery-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.8rem;
+        }
+        
+        .back-btn {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: var(--gold);
+            color: var(--earth-dark);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--gold-light);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+        
+        .gallery-img {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #333;
+            overflow: hidden;
+        }
+        
+        .gallery-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-img img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-desc {
+            padding: 15px;
+        }
+        
+        .gallery-desc p {
+            font-size: 0.9rem;
+            color: var(--ivory);
+            margin-top: 10px;
+        }
+        
+        .placeholder-icon {
+            font-size: 3rem;
+            color: var(--gold-light);
+            margin-bottom: 10px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .arch-left, .arch-right {
+                width: 120px;
+                height: 200px;
+            }
+
+            .site-content {
+                flex-direction: column;
+            }
+            
+            .logo-text {
+                font-size: 1.8rem;
+            }
+            
+            .map-container {
+                height: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                gap: 10px;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(93, 41, 6, 0.95);
+                flex-direction: column;
+                gap: 0;
+                padding: 20px 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+                z-index: 99;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                width: 100%;
+                text-align: center;
+                margin: 0;
+            }
+            
+            nav a {
+                display: block;
+                padding: 15px;
+                width: 100%;
+                border-radius: 0;
+            }
+            
+            nav a::after {
+                display: none;
+            }
+            
+            .hero {
+                padding: 80px 0;
+                min-height: 70vh;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .tourist-sites, .contact-form, .about-section {
+                padding: 30px;
+            }
+            
+            .site-header {
+                padding: 15px 20px;
+            }
+            
+            .site-title {
+                font-size: 1.6rem;
+            }
+            
+            .site-info {
+                padding: 20px;
+            }
+            
+            .map-container {
+                height: 400px;
+            }
+            
+            .directions-controls {
+                position: relative;
+                top: 0;
+                left: 0;
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo {
+                padding: 6px 12px;
+            }
+            
+            .logo-img {
+                height: 50px;
+            }
+            
+            .logo-text {
+                font-size: 1.6rem;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin: 40px 0 30px;
+            }
+            
+            .exhibits {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .exhibit-img {
+                height: 200px;
+            }
+            
+            .tourist-sites, .contact-form, .about-section {
+                padding: 20px;
+                margin: 40px 0;
+            }
+            
+            .site-header {
+                padding: 12px 15px;
+            }
+            
+            .site-icon {
+                font-size: 1.5rem;
+            }
+            
+            .site-title {
+                font-size: 1.4rem;
+            }
+            
+            .site-image {
+                min-height: 250px;
+            }
+            
+            .footer-content {
+                gap: 20px;
+            }
+            
+            .submit-btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
+            .mission-statement {
+                font-size: 1.1rem;
+                padding: 20px;
+            }
+            
+            .map-container {
+                height: 300px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .logo {
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+            
+            .logo-text {
+                font-size: 1.4rem;
+            }
+            
+            .header-content {
+                justify-content: center;
+            }
+            
+            .menu-toggle {
+                position: absolute;
+                right: 20px;
+                top: 20px;
+            }
+            
+            .arch-left, .arch-right {
+                width: 80px;
+                height: 150px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="home-bg">
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo" id="homeLink">
+                <div class="logo-img">
+                    <i class="fas fa-landmark" style="font-size: 3rem; color: var(--gold); padding: 10px;"></i>
+                </div>
+                <div class="logo-text">Kasena Museum</div>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="exhibits">Cultural Exhibits</a></li>
+                    <li><a href="#" class="nav-link" data-page="sites">Tourist Sites</a></li>
+                    <li><a href="#" class="nav-link" data-page="hotels">Hotels</a></li>
+                    <li><a href="#" class="nav-link" data-page="transport">Transport</a></li>
+                    <li><a href="#" class="nav-link" data-page="directions">Directions</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                    <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home" class="page-container active-page">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="arch-left architecture"></div>
+            <div class="arch-right architecture"></div>
+            <div class="pattern"></div>
+            
+            <div class="container hero-content">
+                <h1>Discover the Rich Heritage of the Kasena People</h1>
+                <p>Step into our virtual museum to explore the ancient traditions, art, and cultural sites of the Kasena people of Northern Ghana.</p>
+                <button class="hero-btn" id="exploreBtn">Explore Cultural Heritage</button>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="container">
+            <h2 class="section-title">Cultural Exhibits</h2>
+            
+            <div class="exhibits">
+                <div class="exhibit-card">
+                    <div class="exhibit-img">
+                        <img src="https://media.istockphoto.com/id/2222926491/photo/traditional-fortified-tata-somba-house-of-tamberma-people-in-koutammakou-also-known-as-the.jpg?s=612x612&w=0&k=20&c=mR-9dFvKy4n8kIGB2rS5PqyLPFHBatprEH8JhUWjy70=" alt="Traditional Architecture">
+                    </div>
+                    <div class="exhibit-content">
+                        <h3>Traditional Architecture</h3>
+                        <p>Explore the unique architectural design of Kasena homes featuring concentric circular compounds with intricate wall motifs symbolizing protection and ancestral wisdom.</p>
+                        <button class="exhibit-btn" data-page="exhibits">Explore</button>
+                    </div>
+                </div>
+                
+                <div class="exhibit-card">
+                    <div class="exhibit-img">
+                        <img src="https://media.istockphoto.com/id/840699936/photo/african-mask-with-hair-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=u2Nc69SxYML1-aC4VMfJDWnEnjsyuRNkf1mN20OmwRA=" alt="Ceremonial Artifacts">
+                    </div>
+                    <div class="exhibit-content">
+                        <h3>Ceremonial Artifacts</h3>
+                        <p>View ceremonial artifacts used in ancestral veneration, rain-making ceremonies, initiation rites and performance of final funeral rites.</p>
+                        <button class="exhibit-btn" data-page="exhibits">Explore</button>
+                    </div>
+                </div>
+                
+                <div class="exhibit-card">
+                    <div class="exhibit-img">
+                        <img src="https://media.istockphoto.com/id/1408451530/photo/smiling-ghanaian-woman-wearing-elegant-traditional-clothing-in-a-studio.jpg?s=612x612&w=0&k=20&c=uhI6Rg5yoNWbSieZ-feeIzZW4ZcpZv9V--q_pVsG1YU=" alt="Textile Traditions">
+                    </div>
+                    <div class="exhibit-content">
+                        <h3>Textile Traditions</h3>
+                        <p>Discover the symbolic patterns of kasena textiles, where geometric designs represent clan identities and natural elements like rain and fertility.</p>
+                        <button class="exhibit-btn" data-page="exhibits">Explore</button>
+                    </div>
+                </div>
+                
+                <div class="exhibit-card">
+                    <div class="exhibit-img">
+                        <img src="https://media.istockphoto.com/id/836193168/photo/african-farmer.jpg?s=612x612&w=0&k=20&c=OGxsMPJRMXfN-rpcVZk_aDRtQCWDH2mVmzwmJ5YJBko=" alt="Agricultural Practices">
+                    </div>
+                    <div class="exhibit-content">
+                        <h3>Agricultural Practices</h3>
+                        <p>Discover traditional farming techniques including crop rotation, intercropping, and organic fertilization methods passed down through generations.</p>
+                        <button class="exhibit-btn" data-page="exhibits">Explore</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tourist Sites Preview -->
+            <div class="tourist-sites">
+                <h2 class="section-title">Paga Tourist Sites</h2>
+                
+                <div class="site-card">
+                    <div class="site-header">
+                        <div class="site-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <div class="site-title">Paga Sacred Crocodile Ponds</div>
+                    </div>
+                    <div class="site-content">
+                        <div class="site-image">
+                            <img src="https://media.istockphoto.com/id/2109161344/photo/nile-crocodile-crocodylus-niloticus-large-crocodilian-native-to-freshwater-habitats-in-africa.webp?a=1&b=1&s=612x612&w=0&k=20&c=HqAyLNMsG5jWc-XZgPAD_0E3-vE_FcBv-AUU5ZnsGDw=" alt="Paga Sacred Crocodile Ponds">
+                        </div>
+                        <div class="site-info">
+                            <p>The Paga Crocodile Ponds represent the sacred covenant between the Kasena people and crocodiles, believed to embody ancestral spirits.</p>
+                            <ul>
+                                <li>Over 500 sacred crocodiles in three main ponds</li>
+                                <li>Crocodiles considered spirits of their ancestors</li>
+                                <li>Special rituals performed during Fao festival</li>
+                                <li>Visitors can safely interact with crocodiles</li>
+                            </ul>
+                            <button class="exhibit-btn" data-page="sites">View All Sites</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Transport Preview -->
+            <div class="tourist-sites" style="margin-top: 40px;">
+                <h2 class="section-title">Transportation Services</h2>
+                <div class="site-content" style="flex-direction: column; padding: 20px;">
+                    <div class="site-info" style="width: 100%;">
+                        <p>Book comfortable transportation to our heritage sites:</p>
+                        <ul>
+                            <li><strong>From Bolgatanga:</strong> GHC 50.00 per passenger</li>
+                            <li><strong>From Navrongo:</strong> GHC 30.00 per passenger</li>
+                            <li><strong>Air-conditioned vehicles with experienced drivers</strong></li>
+                        </ul>
+                        <button class="exhibit-btn" data-page="transport">Book Transportation</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Exhibits Page -->
+    <div id="exhibits" class="page-container">
+        <section class="hero" style="min-height: 40vh; padding: 60px 0;">
+            <div class="container hero-content">
+                <h1>Cultural Exhibits</h1>
+                <p>Explore the rich cultural artifacts and traditions of the Kasena people</p>
+            </div>
+        </section>
+        
+        <main class="container">
+            <div class="exhibits">
+                <!-- Traditional Architecture Exhibit -->
+                <div class="exhibit-card">
+                    <div class="exhibit-img">
+                        <img src="https://media.istockphoto.com/id/172196583/photo/loam-castle.jpg?s=612x612&w=0&k=20&c=BSW7s5TPDWTGCEGkBneaMAGOI_WYpcEtOszPUr8ZIxQ=" alt="Traditional Architecture">
+                    </div>
+                    <div class="exhibit-content">
+                        <h3>Traditional Architecture</h3>
+                        <p>Explore the unique architectural design of Kasena homes featuring concentric circular compounds with intricate wall motifs symbolizing protection and ancestral wisdom.</p>
+                        <p>The architecture represents a complex cosmological worldview where the circular layout mirrors the universe, with the central courtyard symbolizing the sun and surrounding rooms representing celestial bodies.</p>
+                        <button class="exhibit-btn" onclick="showGallery('architecture')">Learn More</button>
+                    </div>
+                    <div class="exhibit-gallery" id="architecture-gallery">
+                        <div class="gallery-header">
+                            <h3 class="gallery-title">Traditional Architecture Gallery</h3>
+                            <button class="back-btn" onclick="hideGallery('architecture')">Back to Description</button>
+                        </div>
+                        <div class="gallery-grid">
+                            <!-- 10 image placeholders -->
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-home"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Traditional Kasena compound with circular layout</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-drafting-compass"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Detailed wall motifs symbolizing protection</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-igloo"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Thatched roof construction techniques</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-vector-square"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Geometric patterns in courtyard designs</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-draw-polygon"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Symbolic carvings on entrance doors</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-landmark"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Community gathering spaces within compounds</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-building"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Multi-generational family structures</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-archway"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Ceremonial gateways and entrances</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-paint-roller"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Natural pigments used in wall decorations</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-ruler-combined"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Precision in circular compound construction</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ceremonial Artifacts Exhibit -->
+                <div class="exhibit-card">
+                    <div class="exhibit-img">
+                        <img src="https://media.istockphoto.com/id/644531388/photo/voodoo-paraphernalia-akodessawa-fetish-market-lom%C3%A9-togo-west-africa.jpg?s=612x612&w=0&k=20&c=GmpgB6nNbr52kJGLz3Z-_5XX8RtpWBKikJDxDFXELUU=" alt="Ceremonial Artifacts">
+                    </div>
+                    <div class="exhibit-content">
+                        <h3>Ceremonial Artifacts</h3>
+                        <p>View ceremonial artifacts used in ancestral veneration, rain-making ceremonies, initiation rites and performance of final funeral rites.</p>
+                        <p>These artifacts include sacred drums, ritual masks, and divination tools that have been passed down through generations. Each piece carries deep spiritual significance and is used in specific ceremonies throughout the agricultural calendar.</p>
+                        <button class="exhibit-btn" onclick="showGallery('artifacts')">Learn More</button>
+                    </div>
+                    <div class="exhibit-gallery" id="artifacts-gallery">
+                        <div class="gallery-header">
+                            <h3 class="gallery-title">Ceremonial Artifacts Gallery</h3>
+                            <button class="back-btn" onclick="hideGallery('artifacts')">Back to Description</button>
+                        </div>
+                        <div class="gallery-grid">
+                            <!-- 10 image placeholders -->
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-drum"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Sacred drums used in ritual ceremonies</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-mask"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Ritual masks representing ancestral spirits</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-gem"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Divination tools for spiritual guidance</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-ring"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Ceremonial jewelry for rites of passage</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-fan"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Ritual fans used in purification ceremonies</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-ankh"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Symbolic artifacts for ancestral veneration</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-hat-cowboy"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Ceremonial headdresses for special occasions</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-bell"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Ritual bells used in dance ceremonies</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-hand-sparkles"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Blessing artifacts for community events</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-vial"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Containers for sacred medicinal substances</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Textile Traditions Exhibit -->
+                <div class="exhibit-card">
+                    <div class="exhibit-img">
+                        <img src="https://media.istockphoto.com/id/95756763/photo/african-colored-pattern-fabric-background.jpg?s=612x612&w=0&k=20&c=kdGGD3hjcvSJm0vc7P9YuFoSKlojJinZo4FIIlyE_YE=" alt="Textile Traditions">
+                    </div>
+                    <div class="exhibit-content">
+                        <h3>Textile Traditions</h3>
+                        <p>Discover the symbolic patterns of kasena textiles, where geometric designs represent clan identities and natural elements like rain and fertility.</p>
+                        <p>The weaving techniques used are among the oldest in West Africa, with patterns that tell stories of migration, harvest, and community values. Natural dyes are extracted from plants and minerals found in the local environment.</p>
+                        <button class="exhibit-btn" onclick="showGallery('textiles')">Learn More</button>
+                    </div>
+                    <div class="exhibit-gallery" id="textiles-gallery">
+                        <div class="gallery-header">
+                            <h3 class="gallery-title">Textile Traditions Gallery</h3>
+                            <button class="back-btn" onclick="hideGallery('textiles')">Back to Description</button>
+                        </div>
+                        <div class="gallery-grid">
+                            <!-- 10 image placeholders -->
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-tshirt"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Traditional woven garments for ceremonies</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-ring"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Symbolic patterns representing clan identities</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-cloud-rain"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Rain-inspired motifs in textile designs</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-seedling"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Fertility symbols in ceremonial cloths</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-wind"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Natural dye extraction techniques</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-palette"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Traditional weaving loom setup</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-ruler-horizontal"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Pattern measurement and creation process</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-water"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Water symbol patterns in daily wear</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-sun"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Sun motifs representing life and energy</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-feather"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Feather-inspired border designs</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pottery Techniques Exhibit -->
+                <div class="exhibit-card">
+                    <div class="exhibit-img">
+                        <img src="https://media.istockphoto.com/id/2164417182/photo/crafts-and-clothing-in-guinea-bissau.jpg?s=612x612&w=0&k=20&c=5UceVFPcYZil5e4SJ3gQ-AxFrAptv2n9coSDxDhMs5k=" alt="Pottery Techniques">
+                    </div>
+                    <div class="exhibit-content">
+                        <h3>Pottery Techniques</h3>
+                        <p>Discover the ancient pottery techniques that have been preserved for centuries in Kasena communities.</p>
+                        <p>Using locally sourced clay and traditional firing methods, Kasena potters create functional and ceremonial vessels. The distinctive black pottery is created through a special smoking process after firing.</p>
+                        <button class="exhibit-btn" onclick="showGallery('pottery')">Learn More</button>
+                    </div>
+                    <div class="exhibit-gallery" id="pottery-gallery">
+                        <div class="gallery-header">
+                            <h3 class="gallery-title">Pottery Techniques Gallery</h3>
+                            <button class="back-btn" onclick="hideGallery('pottery')">Back to Description</button>
+                        </div>
+                        <div class="gallery-grid">
+                            <!-- 10 image placeholders -->
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-mortar-pestle"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Clay preparation and purification process</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-hands"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Hand-coiling technique for vessel formation</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-jug"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Water storage vessels with unique shapes</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-fire"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Traditional wood-firing techniques</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-smoking"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Smoking process for black pottery creation</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-bowl-food"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Ceremonial serving dishes</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-wine-bottle"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Specialized vessels for traditional beverages</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-vial"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Ritual containers for medicinal preparations</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-egg"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Incised decoration techniques</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-paintbrush"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Natural pigment application methods</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Agricultural Practices Exhibit -->
+                <div class="exhibit-card">
+                    <div class="exhibit-img">
+                        <img src="https://media.istockphoto.com/id/1291262353/photo/african-woman-planting-rice.jpg?s=612x612&w=0&k=20&c=-TIGuJYE3clClKjolieYBktxzb1LRKSwfq_YLhSd_5g=" alt="Agricultural Practices">
+                    </div>
+                    <div class="exhibit-content">
+                        <h3>Agricultural Practices</h3>
+                        <p>Discover the traditional farming techniques of the Kasena people, including crop rotation, intercropping, and organic fertilization methods passed down through generations.</p>
+                        <p>These sustainable practices have been developed over centuries to thrive in the local climate and soil conditions, preserving biodiversity while ensuring food security for communities.</p>
+                        <button class="exhibit-btn" onclick="showGallery('agriculture')">Learn More</button>
+                    </div>
+                    <div class="exhibit-gallery" id="agriculture-gallery">
+                        <div class="gallery-header">
+                            <h3 class="gallery-title">Agricultural Practices Gallery</h3>
+                            <button class="back-btn" onclick="hideGallery('agriculture')">Back to Description</button>
+                        </div>
+                        <div class="gallery-grid">
+                            <!-- 10 image placeholders -->
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-seedling"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Traditional seed selection and preservation</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-tractor"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Hand-tool cultivation techniques</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-leaf"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Intercropping methods for soil preservation</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-recycle"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Crop rotation systems</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-water"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Water conservation techniques</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-compost"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Organic fertilization methods</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-cloud-sun"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Seasonal planting calendars</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-wind"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Windbreak techniques for soil protection</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-bugs"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Natural pest control methods</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-img">
+                                    <div class="placeholder-icon">
+                                        <i class="fas fa-hand-holding-seedling"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-desc">
+                                    <p>Harvesting and storage techniques</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Sites Page -->
+    <div id="sites" class="page-container">
+        <section class="hero" style="min-height: 40vh; padding: 60px 0;">
+            <div class="container hero-content">
+                <h1>Tourist Sites</h1>
+                <p>Explore the sacred and historical sites of the Kasena people</p>
+            </div>
+        </section>
+        
+        <main class="container">
+            <div class="tourist-sites">
+                <h2 class="section-title">Paga Tourist Sites</h2>
+                
+                <div class="site-card">
+                    <div class="site-header">
+                        <div class="site-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <div class="site-title">Paga Sacred Crocodile Ponds</div>
+                    </div>
+                    <div class="site-content">
+                        <div class="site-image">
+                            <img src="https://media.istockphoto.com/id/2169844547/photo/close-up-of-crocodile.jpg?s=1024x1024&w=is&k=20&c=375fAGsfjzJOD1zeGX0EIcZ4uw1bsrOd_D4FzdIOS1c=" alt="Paga Sacred Crocodile Ponds">
+                        </div>
+                        <div class="site-info">
+                            <p>The Paga Crocodile Ponds represent the sacred covenant between the Kasena people and crocodiles, believed to embody ancestral spirits.</p>
+                            <ul>
+                                <li>Over 500 sacred crocodiles in three main ponds</li>
+                                <li>Crocodiles considered spirits of their ancestors</li>
+                                <li>Special rituals performed during Fao festival</li>
+                                <li>Visitors can safely interact with crocodiles</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="site-card">
+                    <div class="site-header">
+                        <div class="site-icon">
+                            <i class="fas fa-monument"></i>
+                        </div>
+                        <div class="site-title">Pikworo Slave Camp</div>
+                    </div>
+                    <div class="site-content">
+                        <div class="site-image">
+                            <img src="https://images.unsplash.com/photo-1731329576868-2edbc588027f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8c2xhdmVzfGVufDB8fDB8fHww" alt="Pikworo Slave Camp">
+                        </div>
+                        <div class="site-info">
+                            <p>A historical site that served as a slave camp during the trans-Atlantic slave trade, preserving the memory of this painful period.</p>
+                            <ul>
+                                <li>Established in 1704 as a slave transit camp</li>
+                                <li>Features natural rock formations used as prison cells</li>
+                                <li>Guided tours explaining the history and significance</li>
+                                <li>Annual remembrance ceremonies</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="site-card">
+                    <div class="site-header">
+                        <div class="site-icon">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <div class="site-title">Tongo Hills</div>
+                    </div>
+                    <div class="site-content">
+                        <div class="site-image">
+                            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1000" alt="Tongo Hills">
+                        </div>
+                        <div class="site-info">
+                            <p>Sacred hills featuring unique rock formations and ancient shrines central to Kasena spiritual practices.</p>
+                            <ul>
+                                <li>Site of annual Damba festival celebrations</li>
+                                <li>Ancient rock shrines for ancestral worship</li>
+                                <li>Panoramic views of the surrounding landscape</li>
+                                <li>Guided spiritual tours available</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Hotels Page -->
+    <div id="hotels" class="page-container">
+        <section class="hero" style="min-height: 40vh; padding: 60px 0;">
+            <div class="container hero-content">
+                <h1>Accommodations</h1>
+                <p>Find comfortable places to stay during your visit</p>
+            </div>
+        </section>
+        
+        <main class="container">
+            <h2 class="section-title">Recommended Hotels</h2>
+            
+            <div class="hotel-card">
+                <div class="hotel-img">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhvdGVsfGVufDB8fDB8fHww" alt="Paga Crocodile Inn">
+                </div>
+                <div class="hotel-content">
+                    <div class="hotel-header">
+                        <h3 class="hotel-name">Grace Land Hotel</h3>
+                        <div class="hotel-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p>Located just minutes from the sacred crocodile ponds, this inn offers traditional hospitality with modern comforts.</p>
+                    
+                    <!-- Room Selection Section -->
+                    <div class="room-selection">
+                        <div class="room-title">Select Room Type:</div>
+                        <div class="room-options">
+                            <div class="room-option selected" data-type="ac" data-price="250">
+                                <div class="room-type">Air Conditioned</div>
+                                <div class="room-price">GHC 250/night</div>
+                                <div class="room-features">King bed, Private bath, Free WiFi</div>
+                            </div>
+                            <div class="room-option" data-type="fan" data-price="180">
+                                <div class="room-type">Fan Room</div>
+                                <div class="room-price">GHC 180/night</div>
+                                <div class="room-features">Queen bed, Shared bath, Fan</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="exhibit-btn" onclick="openBookingModal('Grace Land', 250, 'ac')">Book Now</button>
+                </div>
+            </div>
+            
+            <div class="hotel-card">
+                <div class="hotel-img">
+                    <img src="https://media.istockphoto.com/id/1404746308/photo/bedroom-room-with-lamps-lights-white-pillows-with-sheet-on-mattress-bed-headboard-in-modern.webp?a=1&b=1&s=612x612&w=0&k=20&c=B60jpbM9Xl89s2UI2yjAdzsrOpFKORujov8U6RRasj0=" alt="Navrongo Heritage Lodge">
+                </div>
+                <div class="hotel-content">
+                    <div class="hotel-header">
+                        <h3 class="hotel-name">AA Country Side Hotel</h3>
+                        <div class="hotel-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <p>Experience authentic Kasena architecture and hospitality at this eco-friendly lodge near Navrongo.</p>
+                    
+                    <!-- Room Selection Section -->
+                    <div class="room-selection">
+                        <div class="room-title">Select Room Type:</div>
+                        <div class="room-options">
+                            <div class="room-option selected" data-type="ac" data-price="220">
+                                <div class="room-type">Air Conditioned</div>
+                                <div class="room-price">GHC 220/night</div>
+                                <div class="room-features">King bed, Private bath, Balcony</div>
+                            </div>
+                            <div class="room-option" data-type="fan" data-price="150">
+                                <div class="room-type">Fan Room</div>
+                                <div class="room-price">GHC 150/night</div>
+                                <div class="room-features">Double bed, Shared bath, Fan</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="exhibit-btn" onclick="openBookingModal('AA Country Side', 220, 'ac')">Book Now</button>
+                </div>
+            </div>
+            
+            <div class="hotel-card">
+                <div class="hotel-img">
+                    <img src="https://media.istockphoto.com/id/174767532/photo/hotel-room.webp?a=1&b=1&s=612x612&w=0&k=20&c=v_3UjT9rNASfoL7YRfmjnqH7mntHUffuE3T3KF6pv-A=" alt="Bolgatanga Safari Resort">
+                </div>
+                <div class="hotel-content">
+                    <div class="hotel-header">
+                        <h3 class="hotel-name">Kubs Lodge</h3>
+                        <div class="hotel-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p>A luxurious resort offering safari experiences combined with modern amenities and traditional design elements.</p>
+                    
+                    <!-- Room Selection Section -->
+                    <div class="room-selection">
+                        <div class="room-title">Select Room Type:</div>
+                        <div class="room-options">
+                            <div class="room-option selected" data-type="ac" data-price="380">
+                                <div class="room-type">Deluxe AC</div>
+                                <div class="room-price">GHC 380/night</div>
+                                <div class="room-features">King bed, Private bath, Balcony</div>
+                            </div>
+                            <div class="room-option" data-type="fan" data-price="280">
+                                <div class="room-type">Standard Fan</div>
+                                <div class="room-price">GHC 280/night</div>
+                                <div class="room-features">Double bed, Private bath, Fan</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="exhibit-btn" onclick="openBookingModal('Kubs Lodge', 380, 'ac')">Book Now</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Directions Page -->
+    <div id="directions" class="page-container">
+        <section class="hero" style="min-height: 40vh; padding: 60px 0;">
+            <div class="container hero-content">
+                <h1>Directions</h1>
+                <p>Find your way to the Kasena Heritage Museum and surrounding sites</p>
+            </div>
+        </section>
+        
+        <main class="container">
+            <h2 class="section-title">Map & Directions</h2>
+            
+            <div class="map-container">
+                <div id="map"></div>
+                <div class="directions-controls">
+                    <h3>Get Directions</h3>
+                    <div class="form-group">
+                        <label for="start">Starting Point:</label>
+                        <input type="text" id="start" class="form-control" placeholder="Enter your location">
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">Destination:</label>
+                        <select id="destination" class="form-control">
+                            <option value="10.9932,-1.0963">Paga Crocodile Pond</option>
+                            <option value="10.9012,-1.0903">Pikworo Slave Camp</option>
+                            <option value="10.9815,-1.0874">Kasena Heritage Museum</option>
+                        </select>
+                    </div>
+                    <button class="exhibit-btn" id="getDirections">Show Directions</button>
+                </div>
+            </div>
+            
+            <div class="transport-options">
+                <h2 class="section-title">Transportation Options</h2>
+                
+                <div class="transport-card">
+                    <div class="transport-header">
+                        <div class="transport-icon">
+                            <i class="fas fa-taxi"></i>
+                        </div>
+                        <h3 class="transport-title">Taxi Service</h3>
+                    </div>
+                    <div class="transport-details">
+                        <p>Private taxi service with local drivers who know the area well. Available 24/7 for your convenience.</p>
+                        <div class="transport-price">GHC 50 - 150 depending on distance</div>
+                    </div>
+                    <button class="exhibit-btn" data-page="transport">Book Taxi</button>
+                </div>
+                
+                <div class="transport-card">
+                    <div class="transport-header">
+                        <div class="transport-icon">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <h3 class="transport-title">Tour Shuttle</h3>
+                    </div>
+                    <div class="transport-details">
+                        <p>Comfortable air-conditioned shuttles with guided tours to multiple sites throughout the day.</p>
+                        <div class="transport-price">GHC 20 per person (group discounts available)</div>
+                    </div>
+                    <button class="exhibit-btn" data-page="transport">Book Shuttle</button>
+                </div>
+                
+                <div class="transport-card">
+                    <div class="transport-header">
+                        <div class="transport-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3 class="transport-title">Car Rental</h3>
+                    </div>
+                    <div class="transport-details">
+                        <p>Self-drive options with well-maintained vehicles and comprehensive insurance coverage.</p>
+                        <div class="transport-price">From GHC 200/day (fuel not included)</div>
+                    </div>
+                    <button class="exhibit-btn" data-page="transport">Rent a Car</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Transport Booking Page -->
+    <div id="transport" class="page-container">
+        <section class="hero" style="min-height: 40vh; padding: 60px 0;">
+            <div class="container hero-content">
+                <h1>Transport Services</h1>
+                <p>Book your transportation for a seamless cultural experience</p>
+            </div>
+        </section>
+        
+        <main class="container">
+            <h2 class="section-title">Book Your Transport</h2>
+            
+            <form id="transportForm" class="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="transportType">Transport Type:</label>
+                        <select id="transportType" class="form-control">
+                            <option value="taxi_bolga">Taxi from Bolgatanga</option>
+                            <option value="taxi_navrongo">Taxi from Navrongo</option>
+                            <option value="shuttle">Tour Shuttle</option>
+                            <option value="car_rental">Car Rental</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="passengers">Passengers:</label>
+                        <select id="passengers" class="form-control">
+                            <option value="1">1 Passenger</option>
+                            <option value="2">2 Passengers</option>
+                            <option value="3">3 Passengers</option>
+                            <option value="4">4 Passengers</option>
+                            <option value="5">5 Passengers</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pickupDate">Pickup Date:</label>
+                        <input type="date" id="pickupDate" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pickupTime">Pickup Time:</label>
+                        <select id="pickupTime" class="form-control">
+                            <option value="08:00">8:00 AM</option>
+                            <option value="09:00">9:00 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="12:00">12:00 PM</option>
+                            <option value="13:00">1:00 PM</option>
+                            <option value="14:00">2:00 PM</option>
+                            <option value="15:00">3:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pickupLocation">Pickup Location:</label>
+                    <select id="pickupLocation" class="form-control">
+                        <option value="hotel">Your Hotel</option>
+                        <option value="airport">Bolgatanga Airport</option>
+                        <option value="bus_station">Navrongo Bus Station</option>
+                        <option value="museum">Kasena Heritage Museum</option>
+                    </select>
+                </div>
+                
+                <div class="booking-summary">
+                    <h3>Booking Summary</h3>
+                    <div class="summary-item">
+                        <span>Service:</span>
+                        <span id="summaryType">Taxi from Bolgatanga</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Passengers:</span>
+                        <span id="summaryPassengers">1</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Date:</span>
+                        <span id="summaryDate">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Time:</span>
+                        <span id="summaryTime">8:00 AM</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Pickup:</span>
+                        <span id="summaryLocation">Your Hotel</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total Price:</span>
+                        <span>GHC <span id="summaryPrice">50.00</span></span>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">Confirm Booking</button>
+            </form>
+        </main>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page-container">
+        <section class="hero" style="min-height: 40vh; padding: 60px 0;">
+            <div class="container hero-content">
+                <h1>About the Museum</h1>
+                <p>Preserving and celebrating the rich heritage of the Kasena people</p>
+            </div>
+        </section>
+        
+        <main class="container">
+            <div class="about-section">
+                <h2 class="section-title">Our History</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>The Kasena Heritage Museum was established in 1998 through a collaborative effort between the Kasena Traditional Council and the Ghanaian Ministry of Culture.</p>
+                        <p>Our mission is to preserve, document, and showcase the cultural heritage of the Kasena people - one of Ghana's most historically significant ethnic groups.</p>
+                        <p>The museum complex spans 5 acres and includes exhibition halls, a research center, an amphitheater for cultural performances, and a traditional compound demonstrating authentic Kasena architecture.</p>
+                        <h3>Cultural Preservation</h3>
+                        <p>We work closely with Kasena elders and community leaders to ensure the authenticity of our exhibits and programs. Our collections include over 2,000 artifacts representing various aspects of Kasena life, from agricultural tools to ceremonial objects.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?q=80&w=1000" alt="Museum Building">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mission">
+                <h2 class="section-title">Our Mission</h2>
+                <div class="mission-statement">
+                    To serve as a living repository of Kasena heritage, fostering cultural continuity by connecting past traditions with contemporary expressions, and promoting intercultural understanding through education and engagement.
+                </div>
+            </div>
+            
+            <div class="about-section">
+                <h2 class="section-title">Meet Our Team</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="C:/Users/WEBABEH/Desktop/Kasena Museum/AJ.jpeg" alt="Museum Team">
+                    </div>
+                    <div class="about-text">
+                        <p>Our diverse team includes cultural anthropologists, historians, educators, and members of the Kasena community who bring unique perspectives to our work.</p>
+                        <h3>Mr.Augustine Ajemme</h3>
+                        <p>Director and Chief Curator, PhD in African Cultural Studies with over 20 years of experience in heritage preservation.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page-container">
+        <section class="hero" style="min-height: 40vh; padding: 60px 0;">
+            <div class="container hero-content">
+                <h1>Contact Us</h1>
+                <p>Get in touch with the Kasena Heritage Museum</p>
+            </div>
+        </section>
+        
+        <main class="container">
+            <div class="contact-form">
+                <h2 class="section-title">Send Us a Message</h2>
+                <form id="museumContactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name:</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+            
+            <div class="map-container">
+                <div id="contactMap"></div>
+            </div>
+            
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Paga Road, Upper East Region, Ghana</p>
+                    <p><i class="fas fa-phone"></i> +233 24 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@kasenamuseum.org</p>
+                    <p><i class="fas fa-clock"></i> Open daily 9:00 AM - 5:00 PM</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About the Museum</h3>
+                    <p>The Kasena Heritage Museum is dedicated to preserving and promoting the rich cultural heritage of the Kasena people of Northern Ghana.</p>
+                    <p>Through exhibitions, educational programs, and community engagement, we celebrate the traditions, art, and history of this remarkable culture.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#" class="nav-link" data-page="home">Home</a></p>
+                    <p><a href="#" class="nav-link" data-page="exhibits">Exhibits</a></p>
+                    <p><a href="#" class="nav-link" data-page="sites">Tourist Sites</a></p>
+                    <p><a href="#" class="nav-link" data-page="about">About Us</a></p>
+                    <p><a href="#" class="nav-link" data-page="contact">Contact</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <p>Subscribe to our newsletter for updates on exhibitions and events:</p>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Your email address">
+                        <button class="exhibit-btn" style="margin-top: 10px;">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Kasena Heritage Museum. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Hotel Booking Modal -->
+    <div id="hotelBookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 class="section-title">Hotel Booking</h2>
+            <form id="hotelBookingForm">
+                <input type="hidden" id="hotelName">
+                <input type="hidden" id="roomType">
+                <input type="hidden" id="basePrice">
+                
+                <div class="form-group">
+                    <label for="checkInDate">Check-in Date:</label>
+                    <input type="date" id="checkInDate" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="checkOutDate">Check-out Date:</label>
+                    <input type="date" id="checkOutDate" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="guests">Guests:</label>
+                    <select id="guests" class="form-control" required>
+                        <option value="1">1 Guest</option>
+                        <option value="2">2 Guests</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4 Guests</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" class="form-control" required>
+                </div>
+                
+                <div class="booking-summary">
+                    <h3>Booking Summary</h3>
+                    <div class="summary-item">
+                        <span>Hotel:</span>
+                        <span id="summaryHotel">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Room Type:</span>
+                        <span id="summaryRoomType">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Price/Night:</span>
+                        <span>GHC <span id="summaryPriceNight">-</span></span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Nights:</span>
+                        <span id="summaryNights">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Guests:</span>
+                        <span id="summaryGuests">-</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total Price:</span>
+                        <span>GHC <span id="summaryTotalPrice">-</span></span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="specialRequests">Special Requests:</label>
+                    <textarea id="specialRequests" class="form-control" rows="3"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Complete Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('show');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideMenu = navMenu.contains(event.target) || menuToggle.contains(event.target);
+            if (!isClickInsideMenu && navMenu.classList.contains('show')) {
+                navMenu.classList.remove('show');
+            }
+        });
+        
+        // Page Navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page-container');
+        const homeLink = document.getElementById('homeLink');
+        const body = document.body;
+        
+        function navigateToPage(pageId) {
+            // Hide all pages
+            pages.forEach(page => {
+                page.classList.remove('active-page');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active-page');
+            
+            // Update active nav link
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Update body background class
+            body.className = pageId + '-bg';
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // Close mobile menu if open
+            navMenu.classList.remove('show');
+            
+            // Initialize map if on directions or contact page
+            if(pageId === 'directions' || pageId === 'contact') {
+                initMap();
+            }
+        }
+        
+        // Set up navigation
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageId = this.getAttribute('data-page');
+                navigateToPage(pageId);
+            });
+        });
+        
+        // Home logo link
+        homeLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            navigateToPage('home');
+        });
+        
+        // Explore button on home page
+        const exploreBtn = document.getElementById('exploreBtn');
+        if(exploreBtn) {
+            exploreBtn.addEventListener('click', function() {
+                navigateToPage('exhibits');
+            });
+        }
+        
+        // Exhibit buttons
+        const exhibitBtns = document.querySelectorAll('.exhibit-btn[data-page]');
+        exhibitBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const pageId = this.getAttribute('data-page');
+                if(pageId) {
+                    navigateToPage(pageId);
+                }
+            });
+        });
+        
+        // NEW: Room selection functionality
+        document.querySelectorAll('.room-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove selected class from siblings
+                const siblings = this.parentElement.children;
+                for (let i = 0; i < siblings.length; i++) {
+                    siblings[i].classList.remove('selected');
+                }
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                
+                // Update the book button
+                const hotelCard = this.closest('.hotel-card');
+                const hotelName = hotelCard.querySelector('.hotel-name').textContent;
+                const roomType = this.getAttribute('data-type');
+                const roomPrice = this.getAttribute('data-price');
+                
+                const bookBtn = hotelCard.querySelector('.exhibit-btn');
+                bookBtn.setAttribute('onclick', `openBookingModal('${hotelName}', ${roomPrice}, '${roomType}')`);
+            });
+        });
+        
+        // Hotel Booking Modal
+        const hotelBookingModal = document.getElementById('hotelBookingModal');
+        const closeBtn = document.querySelector('.close-btn');
+        const hotelBookingForm = document.getElementById('hotelBookingForm');
+        
+        function openBookingModal(hotelName, price, roomType) {
+            document.getElementById('hotelName').value = hotelName;
+            document.getElementById('roomType').value = roomType;
+            document.getElementById('basePrice').value = price;
+            
+            // Update summary
+            document.getElementById('summaryHotel').textContent = hotelName;
+            document.getElementById('summaryRoomType').textContent = 
+                roomType === 'ac' ? 'Air Conditioned' : 'Fan Room';
+            document.getElementById('summaryPriceNight').textContent = price.toFixed(2);
+            
+            // Set minimum date for booking
+            const today = new Date();
+            const minDate = today.toISOString().split('T')[0];
+            document.getElementById('checkInDate').min = minDate;
+            document.getElementById('checkOutDate').min = minDate;
+            
+            // Reset dates and recalculate
+            document.getElementById('checkInDate').value = '';
+            document.getElementById('checkOutDate').value = '';
+            updateBookingSummary();
+            
+            hotelBookingModal.style.display = 'flex';
+        }
+        
+        function closeBookingModal() {
+            hotelBookingModal.style.display = 'none';
+        }
+        
+        // Close modal when clicking close button
+        closeBtn.addEventListener('click', closeBookingModal);
+        
+        // Close modal when clicking outside modal content
+        window.addEventListener('click', function(event) {
+            if (event.target === hotelBookingModal) {
+                closeBookingModal();
+            }
+        });
+        
+        // Update booking summary when dates change
+        document.getElementById('checkInDate').addEventListener('change', updateBookingSummary);
+        document.getElementById('checkOutDate').addEventListener('change', updateBookingSummary);
+        document.getElementById('guests').addEventListener('change', updateBookingSummary);
+        
+        function updateBookingSummary() {
+            const checkInDate = document.getElementById('checkInDate').value;
+            const checkOutDate = document.getElementById('checkOutDate').value;
+            const guests = document.getElementById('guests').value;
+            const basePrice = parseFloat(document.getElementById('basePrice').value);
+            
+            // Update guests summary
+            document.getElementById('summaryGuests').textContent = guests;
+            
+            // Calculate nights and total price
+            if (checkInDate && checkOutDate) {
+                const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+                const start = new Date(checkInDate);
+                const end = new Date(checkOutDate);
+                
+                // Calculate difference in days
+                const diffDays = Math.round(Math.abs((end - start) / oneDay));
+                document.getElementById('summaryNights').textContent = diffDays;
+                
+                // Calculate total price
+                const totalPrice = basePrice * diffDays;
+                document.getElementById('summaryTotalPrice').textContent = totalPrice.toFixed(2);
+            } else {
+                document.getElementById('summaryNights').textContent = '-';
+                document.getElementById('summaryTotalPrice').textContent = '-';
+            }
+        }
+        
+        // Handle form submission
+        hotelBookingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                hotel: document.getElementById('hotelName').value,
+                roomType: document.getElementById('roomType').value,
+                checkIn: document.getElementById('checkInDate').value,
+                checkOut: document.getElementById('checkOutDate').value,
+                guests: document.getElementById('guests').value,
+                name: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                totalPrice: document.getElementById('summaryTotalPrice').textContent
+            };
+            
+            // Generate confirmation message
+            const roomTypeText = formData.roomType === 'ac' ? 'Air Conditioned' : 'Fan Room';
+            const confirmationMsg = `
+                Thank you for your booking at ${formData.hotel}!
+                Room Type: ${roomTypeText}
+                Check-in: ${formData.checkIn}
+                Check-out: ${formData.checkOut}
+                Guests: ${formData.guests}
+                Total Price: GHC ${formData.totalPrice}
+                We've sent a confirmation to ${formData.email}.
+            `;
+            
+            alert(confirmationMsg);
+            closeBookingModal();
+            this.reset();
+        });
+        
+        // Initialize Google Maps
+        function initMap() {
+            // Default location - Paga Crocodile Pond
+            const paga = { lat: 10.9932, lng: -1.0963 };
+            
+            // Create map for directions page
+            const mapElement = document.getElementById("map");
+            if (mapElement) {
+                const map = new google.maps.Map(mapElement, {
+                    zoom: 12,
+                    center: paga,
+                    mapTypeId: "terrain"
+                });
+                
+                // Add markers
+                new google.maps.Marker({
+                    position: paga,
+                    map: map,
+                    title: "Paga Crocodile Pond"
+                });
+            }
+            
+            // Create map for contact page
+            const contactMapElement = document.getElementById("contactMap");
+            if (contactMapElement) {
+                new google.maps.Map(contactMapElement, {
+                    center: paga,
+                    zoom: 15,
+                    mapTypeId: "terrain"
+                });
+            }
+        }
+        
+        // Form submission handler for contact page
+        const contactForm = document.getElementById('museumContactForm');
+        if(contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+        }
+        
+        // Transport booking form
+        const transportForm = document.getElementById('transportForm');
+        if(transportForm) {
+            transportForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const transportType = document.getElementById('transportType').value;
+                alert(`Your ${transportType} booking has been confirmed!`);
+                this.reset();
+            });
+        }
+        
+        // Gallery functionality
+        function showGallery(exhibit) {
+            alert(`Opening gallery for ${exhibit} exhibit`);
+        }
+        
+        function hideGallery(exhibit) {
+            // This would normally hide the gallery
+            alert(`Closing gallery for ${exhibit} exhibit`);
+        }
+        
+        // Set home as default page
+        navigateToPage('home');
+        
+        // Set minimum date for transport booking
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const minDate = tomorrow.toISOString().split('T')[0];
+        document.getElementById('pickupDate').min = minDate;
+    </script>
+</body>
+</html>
