@@ -995,70 +995,6 @@
             color: var(--gold);
         }
         
-        /* NEW: Room Selection Styles */
-        .room-selection {
-            margin: 20px 0;
-            border: 1px solid var(--gold-light);
-            border-radius: 8px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-        }
-        
-        .room-title {
-            font-family: 'Cinzel', serif;
-            color: var(--gold);
-            margin-bottom: 12px;
-            font-size: 1.2rem;
-        }
-        
-        .room-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 10px;
-        }
-        
-        .room-option {
-            flex: 1;
-            min-width: 120px;
-            border: 1px solid var(--gold-light);
-            border-radius: 8px;
-            padding: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-        
-        .room-option:hover {
-            border-color: var(--gold);
-            background: rgba(212, 175, 55, 0.1);
-        }
-        
-        .room-option.selected {
-            border-color: var(--gold);
-            background: rgba(212, 175, 55, 0.2);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-        }
-        
-        .room-type {
-            font-weight: 600;
-            color: var(--gold-light);
-            margin-bottom: 5px;
-        }
-        
-        .room-price {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--gold);
-        }
-        
-        .room-features {
-            font-size: 0.8rem;
-            margin-top: 8px;
-            color: var(--ivory);
-            opacity: 0.8;
-        }
-        
         /* Modal Styles */
         .modal {
             display: none;
@@ -2286,45 +2222,7 @@
             
             <div class="hotel-card">
                 <div class="hotel-img">
-                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhvdGVsfGVufDB8fDB8fHww" alt="Paga Crocodile Inn">
-                </div>
-                <div class="hotel-content">
-                    <div class="hotel-header">
-                        <h3 class="hotel-name">Grace Land Hotel</h3>
-                        <div class="hotel-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <p>Located just minutes from the sacred crocodile ponds, this inn offers traditional hospitality with modern comforts.</p>
-                    
-                    <!-- Room Selection Section -->
-                    <div class="room-selection">
-                        <div class="room-title">Select Room Type:</div>
-                        <div class="room-options">
-                            <div class="room-option selected" data-type="ac" data-price="250">
-                                <div class="room-type">Air Conditioned</div>
-                                <div class="room-price">GHC 250/night</div>
-                                <div class="room-features">King bed, Private bath, Free WiFi</div>
-                            </div>
-                            <div class="room-option" data-type="fan" data-price="180">
-                                <div class="room-type">Fan Room</div>
-                                <div class="room-price">GHC 180/night</div>
-                                <div class="room-features">Queen bed, Shared bath, Fan</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <button class="exhibit-btn" onclick="openBookingModal('Grace Land', 250, 'ac')">Book Now</button>
-                </div>
-            </div>
-            
-            <div class="hotel-card">
-                <div class="hotel-img">
-                    <img src="https://media.istockphoto.com/id/1404746308/photo/bedroom-room-with-lamps-lights-white-pillows-with-sheet-on-mattress-bed-headboard-in-modern.webp?a=1&b=1&s=612x612&w=0&k=20&c=B60jpbM9Xl89s2UI2yjAdzsrOpFKORujov8U6RRasj0=" alt="Navrongo Heritage Lodge">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1000" alt="Paga Crocodile Inn">
                 </div>
                 <div class="hotel-content">
                     <div class="hotel-header">
@@ -2334,35 +2232,75 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
                     </div>
-                    <p>Experience authentic Kasena architecture and hospitality at this eco-friendly lodge near Navrongo.</p>
-                    
-                    <!-- Room Selection Section -->
-                    <div class="room-selection">
-                        <div class="room-title">Select Room Type:</div>
-                        <div class="room-options">
-                            <div class="room-option selected" data-type="ac" data-price="220">
-                                <div class="room-type">Air Conditioned</div>
-                                <div class="room-price">GHC 220/night</div>
-                                <div class="room-features">King bed, Private bath, Balcony</div>
-                            </div>
-                            <div class="room-option" data-type="fan" data-price="150">
-                                <div class="room-type">Fan Room</div>
-                                <div class="room-price">GHC 150/night</div>
-                                <div class="room-features">Double bed, Shared bath, Fan</div>
-                            </div>
+                    <p>Located just minutes from the sacred crocodile ponds, this inn offers traditional hospitality with modern comforts.</p>
+                    <div class="hotel-price">From GHC 250/night</div>
+                    <div class="hotel-features">
+                        <div class="feature">
+                            <i class="fas fa-wifi"></i>
+                            <span>Free WiFi</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-swimming-pool"></i>
+                            <span>Swimming Pool</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-utensils"></i>
+                            <span>Restaurant</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-car"></i>
+                            <span>Free Parking</span>
                         </div>
                     </div>
-                    
-                    <button class="exhibit-btn" onclick="openBookingModal('AA Country Side', 220, 'ac')">Book Now</button>
+                    <button class="exhibit-btn" onclick="openBookingModal('Paga Crocodile Inn', 250)">Book Now</button>
                 </div>
             </div>
             
             <div class="hotel-card">
                 <div class="hotel-img">
-                    <img src="https://media.istockphoto.com/id/174767532/photo/hotel-room.webp?a=1&b=1&s=612x612&w=0&k=20&c=v_3UjT9rNASfoL7YRfmjnqH7mntHUffuE3T3KF6pv-A=" alt="Bolgatanga Safari Resort">
+                    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1000" alt="Navrongo Heritage Lodge">
+                </div>
+                <div class="hotel-content">
+                    <div class="hotel-header">
+                        <h3 class="hotel-name">GraceLand Hotel</h3>
+                        <div class="hotel-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <p>Experience authentic Kasena architecture and hospitality at this eco-friendly lodge near Navrongo.</p>
+                    <div class="hotel-price">From GHC 180/night</div>
+                    <div class="hotel-features">
+                        <div class="feature">
+                            <i class="fas fa-tree"></i>
+                            <span>Garden View</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-utensils"></i>
+                            <span>Local Cuisine</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-sun"></i>
+                            <span>Solar Powered</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-bicycle"></i>
+                            <span>Bike Rentals</span>
+                        </div>
+                    </div>
+                    <button class="exhibit-btn" onclick="openBookingModal('Navrongo Heritage Lodge', 180)">Book Now</button>
+                </div>
+            </div>
+            
+            <div class="hotel-card">
+                <div class="hotel-img">
+                    <img src="https://images.unsplash.com/photo-1561501900-3701fa6a0864?q=80&w=1000" alt="Bolgatanga Safari Resort">
                 </div>
                 <div class="hotel-content">
                     <div class="hotel-header">
@@ -2376,25 +2314,26 @@
                         </div>
                     </div>
                     <p>A luxurious resort offering safari experiences combined with modern amenities and traditional design elements.</p>
-                    
-                    <!-- Room Selection Section -->
-                    <div class="room-selection">
-                        <div class="room-title">Select Room Type:</div>
-                        <div class="room-options">
-                            <div class="room-option selected" data-type="ac" data-price="380">
-                                <div class="room-type">Deluxe AC</div>
-                                <div class="room-price">GHC 380/night</div>
-                                <div class="room-features">King bed, Private bath, Balcony</div>
-                            </div>
-                            <div class="room-option" data-type="fan" data-price="280">
-                                <div class="room-type">Standard Fan</div>
-                                <div class="room-price">GHC 280/night</div>
-                                <div class="room-features">Double bed, Private bath, Fan</div>
-                            </div>
+                    <div class="hotel-price">From GHC 350/night</div>
+                    <div class="hotel-features">
+                        <div class="feature">
+                            <i class="fas fa-spa"></i>
+                            <span>Spa Services</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-dumbbell"></i>
+                            <span>Fitness Center</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-concierge-bell"></i>
+                            <span>24/7 Concierge</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-safari"></i>
+                            <span>Guided Safaris</span>
                         </div>
                     </div>
-                    
-                    <button class="exhibit-btn" onclick="openBookingModal('Kubs Lodge', 380, 'ac')">Book Now</button>
+                    <button class="exhibit-btn" onclick="openBookingModal('Bolgatanga Safari Resort', 350)">Book Now</button>
                 </div>
             </div>
         </main>
@@ -2620,9 +2559,9 @@
                         <img src="C:/Users/WEBABEH/Desktop/Kasena Museum/AJ.jpeg" alt="Museum Team">
                     </div>
                     <div class="about-text">
-                        <p>Our diverse team includes cultural anthropologists, historians, educators, and members of the Kasena community who bring unique perspectives to our work.</p>
-                        <h3>Mr.Augustine Ajemme</h3>
-                        <p>Director and Chief Curator, PhD in African Cultural Studies with over 20 years of experience in heritage preservation.</p>
+                        <p>Our diverse team includes my project supervisor, historians, educators, and members of the Kasena community who bring unique perspectives to our work.</p>
+                        <h3>MR.Ajemme Augustine</h3>
+                        <p>Director and Chief Curator, BSc in Computer Science Student with over 4 years of experience in heritage preservation.</p>
                     </div>
                 </div>
             </div>
@@ -2674,7 +2613,7 @@
                 <div class="footer-section">
                     <h3>Contact Information</h3>
                     <p><i class="fas fa-map-marker-alt"></i> Paga Road, Upper East Region, Ghana</p>
-                    <p><i class="fas fa-phone"></i> +233 24 123 4567</p>
+                    <p><i class="fas fa-phone"></i> +233 59 321 1554</p>
                     <p><i class="fas fa-envelope"></i> info@kasenamuseum.org</p>
                     <p><i class="fas fa-clock"></i> Open daily 9:00 AM - 5:00 PM</p>
                 </div>
@@ -2705,8 +2644,6 @@
                     <h3>Connect With Us</h3>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                     <p>Subscribe to our newsletter for updates on exhibitions and events:</p>
@@ -2718,7 +2655,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 Kasena Heritage Museum. All rights reserved.</p>
+                <p>&copy; 2025 Kasena Heritage Museum. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -2730,8 +2667,6 @@
             <h2 class="section-title">Hotel Booking</h2>
             <form id="hotelBookingForm">
                 <input type="hidden" id="hotelName">
-                <input type="hidden" id="roomType">
-                <input type="hidden" id="basePrice">
                 
                 <div class="form-group">
                     <label for="checkInDate">Check-in Date:</label>
@@ -2766,34 +2701,6 @@
                 <div class="form-group">
                     <label for="phone">Phone Number:</label>
                     <input type="tel" id="phone" class="form-control" required>
-                </div>
-                
-                <div class="booking-summary">
-                    <h3>Booking Summary</h3>
-                    <div class="summary-item">
-                        <span>Hotel:</span>
-                        <span id="summaryHotel">-</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Room Type:</span>
-                        <span id="summaryRoomType">-</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Price/Night:</span>
-                        <span>GHC <span id="summaryPriceNight">-</span></span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Nights:</span>
-                        <span id="summaryNights">-</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Guests:</span>
-                        <span id="summaryGuests">-</span>
-                    </div>
-                    <div class="summary-total">
-                        <span>Total Price:</span>
-                        <span>GHC <span id="summaryTotalPrice">-</span></span>
-                    </div>
                 </div>
                 
                 <div class="form-group">
@@ -2895,55 +2802,225 @@
             });
         });
         
-        // NEW: Room selection functionality
-        document.querySelectorAll('.room-option').forEach(option => {
-            option.addEventListener('click', function() {
-                // Remove selected class from siblings
-                const siblings = this.parentElement.children;
-                for (let i = 0; i < siblings.length; i++) {
-                    siblings[i].classList.remove('selected');
-                }
+        // Form submission handler
+        const contactForm = document.getElementById('museumContactForm');
+        if(contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
                 
-                // Add selected class to clicked option
-                this.classList.add('selected');
+                // Get form data
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    subject: document.getElementById('subject').value,
+                    message: document.getElementById('message').value
+                };
                 
-                // Update the book button
-                const hotelCard = this.closest('.hotel-card');
-                const hotelName = hotelCard.querySelector('.hotel-name').textContent;
-                const roomType = this.getAttribute('data-type');
-                const roomPrice = this.getAttribute('data-price');
+                // Show success message
+                alert('Thank you for your message! We will get back to you soon.');
                 
-                const bookBtn = hotelCard.querySelector('.exhibit-btn');
-                bookBtn.setAttribute('onclick', `openBookingModal('${hotelName}', ${roomPrice}, '${roomType}')`);
+                // Reset form
+                this.reset();
             });
-        });
+        }
+        
+        // Initialize Google Maps
+        function initMap() {
+            // Default location - Paga Crocodile Pond
+            const paga = { lat: 10.9932, lng: -1.0963 };
+            
+            // Check for directions map container
+            const mapElement = document.getElementById("map");
+            if (mapElement) {
+                const map = new google.maps.Map(mapElement, {
+                    zoom: 12,
+                    center: paga,
+                    mapTypeId: "terrain",
+                    styles: [
+                        {
+                            "featureType": "all",
+                            "elementType": "labels.text.fill",
+                            "stylers": [
+                                { "color": "#d4af37" }
+                            ]
+                        },
+                        {
+                            "featureType": "landscape",
+                            "elementType": "all",
+                            "stylers": [
+                                { "color": "#f5f1e6" }
+                            ]
+                        },
+                        {
+                            "featureType": "road.highway",
+                            "elementType": "all",
+                            "stylers": [
+                                { "color": "#8b4513" }
+                            ]
+                        }
+                    ]
+                });
+                
+                // Add markers for key locations
+                const locations = [
+                    { position: { lat: 10.9932, lng: -1.0963 }, title: "Paga Crocodile Pond" },
+                    { position: { lat: 10.9012, lng: -1.0903 }, title: "Pikworo Slave Camp" },
+                    { position: { lat: 10.9815, lng: -1.0874 }, title: "Kasena Heritage Museum" },
+                    { position: { lat: 10.7856, lng: -0.8514 }, title: "Bolgatanga" },
+                    { position: { lat: 10.8950, lng: -1.0930 }, title: "Navrongo" }
+                ];
+                
+                locations.forEach(location => {
+                    new google.maps.Marker({
+                        position: location.position,
+                        map: map,
+                        title: location.title,
+                        icon: {
+                            path: google.maps.SymbolPath.CIRCLE,
+                            scale: 8,
+                            fillColor: "#D4AF37",
+                            fillOpacity: 1,
+                            strokeColor: "#5D2906",
+                            strokeWeight: 2
+                        }
+                    });
+                });
+                
+                // Directions functionality
+                const directionsButton = document.getElementById('getDirections');
+                if (directionsButton) {
+                    directionsButton.addEventListener('click', function() {
+                        const start = document.getElementById('start').value;
+                        const destination = document.getElementById('destination').value;
+                        
+                        const directionsService = new google.maps.DirectionsService();
+                        const directionsRenderer = new google.maps.DirectionsRenderer({
+                            map: map,
+                            suppressMarkers: true,
+                            polylineOptions: {
+                                strokeColor: "#8B4513",
+                                strokeOpacity: 0.8,
+                                strokeWeight: 4
+                            }
+                        });
+                        
+                        directionsService.route(
+                            {
+                                origin: start,
+                                destination: destination,
+                                travelMode: google.maps.TravelMode.DRIVING
+                            },
+                            (response, status) => {
+                                if (status === "OK") {
+                                    directionsRenderer.setDirections(response);
+                                } else {
+                                    window.alert("Directions request failed due to " + status);
+                                }
+                            }
+                        );
+                    });
+                }
+            }
+            
+            // Check for contact map container
+            const contactMapElement = document.getElementById("contactMap");
+            if (contactMapElement) {
+                const contactMap = new google.maps.Map(contactMapElement, {
+                    center: paga,
+                    zoom: 15,
+                    mapTypeId: "terrain",
+                    styles: [
+                        {
+                            "featureType": "all",
+                            "elementType": "labels.text.fill",
+                            "stylers": [
+                                { "color": "#d4af37" }
+                            ]
+                        }
+                    ]
+                });
+                
+                new google.maps.Marker({
+                    position: paga,
+                    map: contactMap,
+                    title: "Kasena Heritage Museum",
+                    icon: {
+                        url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png"
+                    }
+                });
+            }
+        }
+        
+        // Transport booking functionality
+        const transportForm = document.getElementById('transportForm');
+        if(transportForm) {
+            // Update summary when form changes
+            const formElements = transportForm.querySelectorAll('select, input');
+            formElements.forEach(element => {
+                element.addEventListener('change', updateTransportSummary);
+            });
+            
+            transportForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = {
+                    type: document.getElementById('transportType').value,
+                    passengers: document.getElementById('passengers').value,
+                    date: document.getElementById('pickupDate').value,
+                    time: document.getElementById('pickupTime').value,
+                    location: document.getElementById('pickupLocation').value,
+                    price: document.getElementById('summaryPrice').textContent
+                };
+                
+                // Show success message
+                alert('Your transportation has been booked successfully! Total: GHC ' + formData.price);
+                
+                // Reset form
+                this.reset();
+                updateTransportSummary();
+            });
+        }
+        
+        function updateTransportSummary() {
+            const typeSelect = document.getElementById('transportType');
+            const passengersSelect = document.getElementById('passengers');
+            const dateInput = document.getElementById('pickupDate');
+            const timeSelect = document.getElementById('pickupTime');
+            const locationSelect = document.getElementById('pickupLocation');
+            
+            // Update summary fields
+            document.getElementById('summaryType').textContent = typeSelect.options[typeSelect.selectedIndex].text;
+            document.getElementById('summaryPassengers').textContent = passengersSelect.value;
+            document.getElementById('summaryDate').textContent = dateInput.value || '-';
+            document.getElementById('summaryTime').textContent = timeSelect.options[timeSelect.selectedIndex].text;
+            document.getElementById('summaryLocation').textContent = locationSelect.options[locationSelect.selectedIndex].text;
+            
+            // Calculate price
+            let price = 0;
+            if(typeSelect.value.includes('taxi_bolga')) {
+                price = 50 * parseInt(passengersSelect.value);
+            } else if(typeSelect.value.includes('taxi_navrongo')) {
+                price = 30 * parseInt(passengersSelect.value);
+            } else if(typeSelect.value.includes('shuttle')) {
+                price = 20 * parseInt(passengersSelect.value);
+            }
+            
+            document.getElementById('summaryPrice').textContent = price.toFixed(2);
+        }
         
         // Hotel Booking Modal
         const hotelBookingModal = document.getElementById('hotelBookingModal');
         const closeBtn = document.querySelector('.close-btn');
         const hotelBookingForm = document.getElementById('hotelBookingForm');
         
-        function openBookingModal(hotelName, price, roomType) {
+        function openBookingModal(hotelName, price) {
             document.getElementById('hotelName').value = hotelName;
-            document.getElementById('roomType').value = roomType;
-            document.getElementById('basePrice').value = price;
-            
-            // Update summary
-            document.getElementById('summaryHotel').textContent = hotelName;
-            document.getElementById('summaryRoomType').textContent = 
-                roomType === 'ac' ? 'Air Conditioned' : 'Fan Room';
-            document.getElementById('summaryPriceNight').textContent = price.toFixed(2);
-            
             // Set minimum date for booking
             const today = new Date();
             const minDate = today.toISOString().split('T')[0];
             document.getElementById('checkInDate').min = minDate;
             document.getElementById('checkOutDate').min = minDate;
-            
-            // Reset dates and recalculate
-            document.getElementById('checkInDate').value = '';
-            document.getElementById('checkOutDate').value = '';
-            updateBookingSummary();
             
             hotelBookingModal.style.display = 'flex';
         }
@@ -2962,39 +3039,6 @@
             }
         });
         
-        // Update booking summary when dates change
-        document.getElementById('checkInDate').addEventListener('change', updateBookingSummary);
-        document.getElementById('checkOutDate').addEventListener('change', updateBookingSummary);
-        document.getElementById('guests').addEventListener('change', updateBookingSummary);
-        
-        function updateBookingSummary() {
-            const checkInDate = document.getElementById('checkInDate').value;
-            const checkOutDate = document.getElementById('checkOutDate').value;
-            const guests = document.getElementById('guests').value;
-            const basePrice = parseFloat(document.getElementById('basePrice').value);
-            
-            // Update guests summary
-            document.getElementById('summaryGuests').textContent = guests;
-            
-            // Calculate nights and total price
-            if (checkInDate && checkOutDate) {
-                const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-                const start = new Date(checkInDate);
-                const end = new Date(checkOutDate);
-                
-                // Calculate difference in days
-                const diffDays = Math.round(Math.abs((end - start) / oneDay));
-                document.getElementById('summaryNights').textContent = diffDays;
-                
-                // Calculate total price
-                const totalPrice = basePrice * diffDays;
-                document.getElementById('summaryTotalPrice').textContent = totalPrice.toFixed(2);
-            } else {
-                document.getElementById('summaryNights').textContent = '-';
-                document.getElementById('summaryTotalPrice').textContent = '-';
-            }
-        }
-        
         // Handle form submission
         hotelBookingForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -3002,96 +3046,18 @@
             // Get form data
             const formData = {
                 hotel: document.getElementById('hotelName').value,
-                roomType: document.getElementById('roomType').value,
                 checkIn: document.getElementById('checkInDate').value,
                 checkOut: document.getElementById('checkOutDate').value,
                 guests: document.getElementById('guests').value,
                 name: document.getElementById('fullName').value,
                 email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                totalPrice: document.getElementById('summaryTotalPrice').textContent
+                phone: document.getElementById('phone').value
             };
             
-            // Generate confirmation message
-            const roomTypeText = formData.roomType === 'ac' ? 'Air Conditioned' : 'Fan Room';
-            const confirmationMsg = `
-                Thank you for your booking at ${formData.hotel}!
-                Room Type: ${roomTypeText}
-                Check-in: ${formData.checkIn}
-                Check-out: ${formData.checkOut}
-                Guests: ${formData.guests}
-                Total Price: GHC ${formData.totalPrice}
-                We've sent a confirmation to ${formData.email}.
-            `;
-            
-            alert(confirmationMsg);
+            alert(`Thank you for your booking at ${formData.hotel}!\nWe have sent a confirmation to ${formData.email}.`);
             closeBookingModal();
             this.reset();
         });
-        
-        // Initialize Google Maps
-        function initMap() {
-            // Default location - Paga Crocodile Pond
-            const paga = { lat: 10.9932, lng: -1.0963 };
-            
-            // Create map for directions page
-            const mapElement = document.getElementById("map");
-            if (mapElement) {
-                const map = new google.maps.Map(mapElement, {
-                    zoom: 12,
-                    center: paga,
-                    mapTypeId: "terrain"
-                });
-                
-                // Add markers
-                new google.maps.Marker({
-                    position: paga,
-                    map: map,
-                    title: "Paga Crocodile Pond"
-                });
-            }
-            
-            // Create map for contact page
-            const contactMapElement = document.getElementById("contactMap");
-            if (contactMapElement) {
-                new google.maps.Map(contactMapElement, {
-                    center: paga,
-                    zoom: 15,
-                    mapTypeId: "terrain"
-                });
-            }
-        }
-        
-        // Form submission handler for contact page
-        const contactForm = document.getElementById('museumContactForm');
-        if(contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you for your message! We will get back to you soon.');
-                this.reset();
-            });
-        }
-        
-        // Transport booking form
-        const transportForm = document.getElementById('transportForm');
-        if(transportForm) {
-            transportForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const transportType = document.getElementById('transportType').value;
-                alert(`Your ${transportType} booking has been confirmed!`);
-                this.reset();
-            });
-        }
-        
-        // Gallery functionality
-        function showGallery(exhibit) {
-            alert(`Opening gallery for ${exhibit} exhibit`);
-        }
-        
-        function hideGallery(exhibit) {
-            // This would normally hide the gallery
-            alert(`Closing gallery for ${exhibit} exhibit`);
-        }
         
         // Set home as default page
         navigateToPage('home');
@@ -3102,6 +3068,38 @@
         tomorrow.setDate(tomorrow.getDate() + 1);
         const minDate = tomorrow.toISOString().split('T')[0];
         document.getElementById('pickupDate').min = minDate;
+        
+        // Gallery functionality
+        function showGallery(exhibit) {
+            // Hide all galleries first
+            document.querySelectorAll('.exhibit-gallery').forEach(gallery => {
+                gallery.style.display = 'none';
+            });
+            
+            // Show the requested gallery
+            const gallery = document.getElementById(`${exhibit}-gallery`);
+            if (gallery) {
+                gallery.style.display = 'block';
+                
+                // Scroll to the gallery
+                gallery.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        function hideGallery(exhibit) {
+            const gallery = document.getElementById(`${exhibit}-gallery`);
+            if (gallery) {
+                gallery.style.display = 'none';
+                
+                // Scroll to the top of the exhibit card
+                gallery.closest('.exhibit-card').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        // Initialize transport summary
+        if (document.getElementById('transportForm')) {
+            updateTransportSummary();
+        }
     </script>
 </body>
 </html>
