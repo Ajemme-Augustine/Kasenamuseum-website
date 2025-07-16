@@ -104,6 +104,11 @@
             background: linear-gradient(135deg, #7e5109 0%, #b7950b 100%);
             color: var(--text-light);
         }
+        
+        body.events-bg {
+            background: linear-gradient(135deg, #1a5276 0%, #6c3483 100%);
+            color: var(--text-light);
+        }
 
         .container {
             max-width: 1200px;
@@ -1120,6 +1125,213 @@
             margin-bottom: 10px;
         }
         
+        /* NEW: Events Page Styles */
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 20px 0 60px;
+        }
+        
+        .event-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            border: 1px solid var(--gold-light);
+            backdrop-filter: blur(5px);
+        }
+        
+        .event-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+        }
+        
+        .event-header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-bottom: 2px solid var(--gold);
+        }
+        
+        .event-date {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 80px;
+            height: 80px;
+            background: var(--gold);
+            border-radius: 50%;
+            color: var(--earth-dark);
+            font-weight: bold;
+            margin: 0 auto 15px;
+        }
+        
+        .event-month {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+        
+        .event-day {
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+        
+        .event-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .event-details {
+            padding: 20px;
+        }
+        
+        .event-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .event-detail i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            min-width: 30px;
+        }
+        
+        .event-img {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .event-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .event-card:hover .event-img img {
+            transform: scale(1.05);
+        }
+        
+        .register-btn {
+            display: block;
+            width: 100%;
+            background: var(--gold);
+            color: var(--earth-dark);
+            text-align: center;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .register-btn:hover {
+            background: var(--gold-dark);
+        }
+        
+        /* Calendar Section */
+        .calendar-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 2px solid var(--gold);
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .calendar-nav button {
+            background: var(--gold);
+            color: var(--earth-dark);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .calendar-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        
+        .calendar-day-header {
+            text-align: center;
+            padding: 10px;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .calendar-day {
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .calendar-day:hover {
+            background: rgba(212, 175, 55, 0.3);
+        }
+        
+        .calendar-day.event-day {
+            position: relative;
+            background: rgba(212, 175, 55, 0.2);
+        }
+        
+        .calendar-day.event-day::after {
+            content: "";
+            position: absolute;
+            bottom: 5px;
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+        
+        .calendar-day.selected {
+            background: var(--gold);
+            color: var(--earth-dark);
+            font-weight: bold;
+        }
+        
+        .calendar-day.empty {
+            background: transparent;
+            cursor: default;
+        }
+        
         /* Responsive Design */
         @media (max-width: 992px) {
             .hero h1 {
@@ -1233,6 +1445,10 @@
                 max-width: 100%;
                 margin-bottom: 20px;
             }
+            
+            .calendar-grid {
+                grid-template-columns: repeat(7, 1fr);
+            }
         }
 
         @media (max-width: 576px) {
@@ -1321,6 +1537,10 @@
             .gallery-grid {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
+            
+            .events-container {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 400px) {
@@ -1380,6 +1600,7 @@
                     <li><a href="#" class="nav-link" data-page="hotels">Hotels</a></li>
                     <li><a href="#" class="nav-link" data-page="transport">Transport</a></li>
                     <li><a href="#" class="nav-link" data-page="directions">Directions</a></li>
+                    <li><a href="#" class="nav-link" data-page="events">Events</a></li>
                     <li><a href="#" class="nav-link" data-page="about">About</a></li>
                     <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
                 </ul>
@@ -2519,6 +2740,135 @@
         </main>
     </div>
 
+    <!-- Events Page -->
+    <div id="events" class="page-container">
+        <section class="hero" style="min-height: 40vh; padding: 60px 0;">
+            <div class="container hero-content">
+                <h1>Cultural Events</h1>
+                <p>Experience the vibrant traditions and celebrations of the Kasena people</p>
+            </div>
+        </section>
+        
+        <main class="container">
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <div class="calendar-nav">
+                        <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                        <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <h3 class="calendar-title" id="calendarTitle">June 2025</h3>
+                </div>
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Calendar days will be generated here -->
+                </div>
+            </div>
+            
+            <h2 class="section-title">Upcoming Events</h2>
+            
+            <div class="events-container">
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="event-date">
+                            <div class="event-month">JUN</div>
+                            <div class="event-day">15</div>
+                        </div>
+                        <h3 class="event-title">Fao Festival</h3>
+                    </div>
+                    <div class="event-img">
+                        <img src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?q=80&w=1000" alt="Fao Festival">
+                    </div>
+                    <div class="event-details">
+                        <div class="event-detail">
+                            <i class="fas fa-clock"></i>
+                            <span>9:00 AM - 6:00 PM</span>
+                        </div>
+                        <div class="event-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Paga Sacred Crocodile Ponds</span>
+                        </div>
+                        <p>The annual Fao Festival celebrates the sacred relationship between the Kasena people and crocodiles. Witness traditional dances, rituals, and the feeding of the sacred crocodiles.</p>
+                        <button class="register-btn">Register to Attend</button>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="event-date">
+                            <div class="event-month">JUN</div>
+                            <div class="event-day">22</div>
+                        </div>
+                        <h3 class="event-title">Traditional Weaving Workshop</h3>
+                    </div>
+                    <div class="event-img">
+                        <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?q=80&w=1000" alt="Weaving Workshop">
+                    </div>
+                    <div class="event-details">
+                        <div class="event-detail">
+                            <i class="fas fa-clock"></i>
+                            <span>10:00 AM - 3:00 PM</span>
+                        </div>
+                        <div class="event-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Kasena Heritage Museum</span>
+                        </div>
+                        <p>Learn the ancient art of Kasena weaving from master artisans. Create your own traditional textile using authentic techniques and natural dyes. All materials provided.</p>
+                        <button class="register-btn">Register to Attend</button>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="event-date">
+                            <div class="event-month">JUL</div>
+                            <div class="event-day">5</div>
+                        </div>
+                        <h3 class="event-title">Ancestral Storytelling Night</h3>
+                    </div>
+                    <div class="event-img">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000" alt="Storytelling Night">
+                    </div>
+                    <div class="event-details">
+                        <div class="event-detail">
+                            <i class="fas fa-clock"></i>
+                            <span>7:00 PM - 10:00 PM</span>
+                        </div>
+                        <div class="event-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Tongo Hills Amphitheater</span>
+                        </div>
+                        <p>Gather under the stars for an evening of traditional Kasena storytelling. Elders will share myths, legends, and historical accounts passed down through generations.</p>
+                        <button class="register-btn">Register to Attend</button>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="event-date">
+                            <div class="event-month">JUL</div>
+                            <div class="event-day">18</div>
+                        </div>
+                        <h3 class="event-title">Damba Festival</h3>
+                    </div>
+                    <div class="event-img">
+                        <img src="https://images.unsplash.com/photo-1580137189272-c9379f8864fd?q=80&w=1000" alt="Damba Festival">
+                    </div>
+                    <div class="event-details">
+                        <div class="event-detail">
+                            <i class="fas fa-clock"></i>
+                            <span>All Day Event</span>
+                        </div>
+                        <div class="event-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Tongo Hills</span>
+                        </div>
+                        <p>The Damba Festival marks the beginning of the harvest season. Experience traditional drumming, dancing, and ceremonies at the sacred Tongo Hills. This is the most important cultural event of the year.</p>
+                        <button class="register-btn">Register to Attend</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
     <!-- About Page -->
     <div id="about" class="page-container">
         <section class="hero" style="min-height: 40vh; padding: 60px 0;">
@@ -2556,12 +2906,14 @@
                 <h2 class="section-title">Meet Our Team</h2>
                 <div class="about-content">
                     <div class="about-image">
-                        <img src="C:/Users/WEBABEH/Desktop/Kasena Museum/AJ.jpeg" alt="Museum Team">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1000" alt="Museum Team">
                     </div>
                     <div class="about-text">
-                        <p>Our diverse team includes my project supervisor, historians, educators, and members of the Kasena community who bring unique perspectives to our work.</p>
-                        <h3>MR.Ajemme Augustine</h3>
-                        <p>Director and Chief Curator, BSc in Computer Science Student with over 4 years of experience in heritage preservation.</p>
+                        <p>Our diverse team includes historians, educators, and members of the Kasena community who bring unique perspectives to our work.</p>
+                        <h3>Nana Kwame Ababio</h3>
+                        <p>Director and Chief Curator, PhD in African Cultural Studies with over 20 years of experience in heritage preservation.</p>
+                        <h3>Akosua Mensah</h3>
+                        <p>Education Coordinator, specializing in developing cultural programs for schools and community groups.</p>
                     </div>
                 </div>
             </div>
@@ -2636,6 +2988,7 @@
                     <p><a href="#" class="nav-link" data-page="home">Home</a></p>
                     <p><a href="#" class="nav-link" data-page="exhibits">Exhibits</a></p>
                     <p><a href="#" class="nav-link" data-page="sites">Tourist Sites</a></p>
+                    <p><a href="#" class="nav-link" data-page="events">Events</a></p>
                     <p><a href="#" class="nav-link" data-page="about">About Us</a></p>
                     <p><a href="#" class="nav-link" data-page="contact">Contact</a></p>
                 </div>
@@ -2765,6 +3118,11 @@
             // Initialize map if on directions or contact page
             if(pageId === 'directions' || pageId === 'contact') {
                 initMap();
+            }
+            
+            // Initialize calendar if on events page
+            if(pageId === 'events') {
+                initCalendar();
             }
         }
         
@@ -3100,6 +3458,113 @@
         if (document.getElementById('transportForm')) {
             updateTransportSummary();
         }
+        
+        // Event Calendar
+        function initCalendar() {
+            const calendarGrid = document.getElementById('calendarGrid');
+            if (!calendarGrid) return;
+            
+            const calendarTitle = document.getElementById('calendarTitle');
+            const prevMonthBtn = document.getElementById('prevMonth');
+            const nextMonthBtn = document.getElementById('nextMonth');
+            
+            // Event days - for demonstration purposes
+            const eventDays = [3, 7, 12, 15, 19, 22, 25, 28];
+            
+            // Initialize current month
+            let currentDate = new Date();
+            currentDate.setMonth(5); // June (0-indexed: 5 = June)
+            currentDate.setFullYear(2025);
+            
+            function renderCalendar() {
+                // Clear the grid
+                calendarGrid.innerHTML = '';
+                
+                // Set title
+                calendarTitle.textContent = currentDate.toLocaleString('default', { month: 'long', year: 'numeric' });
+                
+                // Create day headers
+                const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                days.forEach(day => {
+                    const dayHeader = document.createElement('div');
+                    dayHeader.className = 'calendar-day-header';
+                    dayHeader.textContent = day;
+                    calendarGrid.appendChild(dayHeader);
+                });
+                
+                // Get first day of month
+                const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay();
+                
+                // Get days in month
+                const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+                
+                // Previous month days
+                const prevMonthDays = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
+                
+                // Fill previous month days
+                for (let i = firstDay - 1; i >= 0; i--) {
+                    const day = document.createElement('div');
+                    day.className = 'calendar-day empty';
+                    day.textContent = prevMonthDays - i;
+                    calendarGrid.appendChild(day);
+                }
+                
+                // Current month days
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const day = document.createElement('div');
+                    day.className = 'calendar-day';
+                    if (eventDays.includes(i)) {
+                        day.classList.add('event-day');
+                    }
+                    day.textContent = i;
+                    
+                    // Add click event
+                    day.addEventListener('click', function() {
+                        document.querySelectorAll('.calendar-day.selected').forEach(el => {
+                            el.classList.remove('selected');
+                        });
+                        this.classList.add('selected');
+                    });
+                    
+                    calendarGrid.appendChild(day);
+                }
+                
+                // Fill remaining cells
+                const totalCells = 42; // 6 rows x 7 days
+                const filledCells = firstDay + daysInMonth;
+                const remainingCells = totalCells - filledCells;
+                
+                for (let i = 1; i <= remainingCells; i++) {
+                    const day = document.createElement('div');
+                    day.className = 'calendar-day empty';
+                    day.textContent = i;
+                    calendarGrid.appendChild(day);
+                }
+            }
+            
+            // Navigation
+            prevMonthBtn.addEventListener('click', function() {
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                renderCalendar();
+            });
+            
+            nextMonthBtn.addEventListener('click', function() {
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                renderCalendar();
+            });
+            
+            // Initial render
+            renderCalendar();
+        }
+        
+        // Event registration buttons
+        document.querySelectorAll('.register-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const eventTitle = this.closest('.event-card').querySelector('.event-title').textContent;
+                alert(`Thank you for your interest in "${eventTitle}"! We've registered you for this event and will send confirmation details to your email.`);
+            });
+        });
     </script>
 </body>
 </html>
