@@ -1279,7 +1279,7 @@
         
         .calendar-grid {
             display: grid;
-            grid-template-columns: repeat(7, 1fr);
+            grid-template-columns: repeat(7, 1fr));
             gap: 5px;
         }
         
@@ -1330,6 +1330,32 @@
         .calendar-day.empty {
             background: transparent;
             cursor: default;
+        }
+        
+        /* Event Registration Form */
+        .event-registration-form {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 2px solid var(--gold);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .registration-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .registration-header h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.8rem;
+        }
+        
+        .registration-header p {
+            color: var(--gold-light);
         }
         
         /* Responsive Design */
@@ -1751,9 +1777,7 @@
                             <!-- 10 image placeholders -->
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-home"></i>
-                                    </div>
+                                    <img src="https://images.unsplash.com/photo-1695543503821-11dd1c9e3e08?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDQyfHx8ZW58MHx8fHx8" alt="Traditional Kasena compound">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Traditional Kasena compound with circular layout</p>
@@ -1761,9 +1785,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-drafting-compass"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/478652897/photo/african-shield.webp?a=1&b=1&s=612x612&w=0&k=20&c=9lLWdhsEmpM24VQLY3p4AF7faJtQ3nscXVAwq3RfDLM=" alt="Wall motifs">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Detailed wall motifs symbolizing protection</p>
@@ -1771,9 +1793,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-igloo"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1079607112/photo/roofer-repairs-the-thatched-roof-of-a-house-botswana-africa.jpg?s=612x612&w=0&k=20&c=1zw-klHxfzu8r5A17AmnrZZU5fxPACFsU7XtsHA7MCU=" alt="Thatched roof">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Thatched roof construction techniques</p>
@@ -1781,9 +1801,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-vector-square"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/172244708/photo/islamic-relief.jpg?s=612x612&w=0&k=20&c=sjMmGfesjaytsI0k07tOjkrYLEvWGrsaYUmZDJkQQc0=" alt="Geometric patterns">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Geometric patterns in courtyard designs</p>
@@ -1791,9 +1809,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-draw-polygon"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/172938303/photo/african-masks.jpg?s=612x612&w=0&k=20&c=10d7SKawmEqjMVejomZK1qnG_wwV_oUVxeBiHKHLb9g=" alt="Symbolic carvings">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Symbolic carvings on entrance doors</p>
@@ -1801,9 +1817,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-landmark"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1301166004/photo/voodoo-women-cult-close-avepozo-togo-west-africa.jpg?s=612x612&w=0&k=20&c=BrSxr0xqgbEwnYu49pd2D8TgPnri-Nr0hSHQgVHZ5j8=" alt="Community gathering">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Community gathering spaces within compounds</p>
@@ -1811,9 +1825,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-building"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1042562116/photo/the-painted-village-of-tiebele-burkina-faso.jpg?s=612x612&w=0&k=20&c=ThTN2V4xKJpqC-W1Pj_jS48AEp76U4KbyZA8PzzW_Fg=" alt="Family structures">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Multi-generational family structures</p>
@@ -1821,9 +1833,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-archway"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/585175610/photo/traditional-zulu-straw-huts-rondavels-village-in-kwazulu-natal.jpg?s=612x612&w=0&k=20&c=YU2IORrtFoE02-Ue_vpMZqmAAdw4-Ej0xinwvzc45F8=" alt="Ceremonial gateways">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Ceremonial gateways and entrances</p>
@@ -1831,9 +1841,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-paint-roller"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1840287771/photo/mombasa-market-in-the-city-center-kenya.jpg?s=612x612&w=0&k=20&c=NulPaj2ZXEHL3K_yhaQnK4zXBRU45SW94kUVBoKDTw0=" alt="Natural pigments">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Natural pigments used in wall decorations</p>
@@ -1841,9 +1849,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-ruler-combined"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1302008828/photo/man-building-a-brick-wall-in-uganda-africa.jpg?s=612x612&w=0&k=20&c=f7XxrDSMLz9AIO7n6KEBSASEbKwuOrYlJaarMAzBKKI=" alt="Compound construction">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Precision in circular compound construction</p>
@@ -1873,9 +1879,7 @@
                             <!-- 10 image placeholders -->
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-drum"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/157244925/photo/drums.jpg?s=612x612&w=0&k=20&c=3NBp397UIX4fAAq7xhIrdWH9c7PW1Jim07ajCx9_EVI=" alt="Sacred drums">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Sacred drums used in ritual ceremonies</p>
@@ -1883,9 +1887,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-mask"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1147547338/photo/wooden-souvenirs-of-hoi-an.jpg?s=612x612&w=0&k=20&c=fd5L5No_vf_AuPmMxpAAobu3sUe4DF4TVBJXUZZu2u8=" alt="Ritual masks">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Ritual masks representing ancestral spirits</p>
@@ -1893,9 +1895,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-gem"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/846461784/photo/traditional-pitchers-and-pots-at-handicrafts-local-market-kei-afer-omo-valley-ethiopia.jpg?s=612x612&w=0&k=20&c=ZHHGF7Pfg4PivWT7qzjCC_BTqO_6Qwzn-dxRZfLoUxo=" alt="Divination tools">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Divination tools for spiritual guidance</p>
@@ -1903,9 +1903,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-ring"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/524451033/photo/traditional-himba-jewellery-kunene-river-epupa-namibia-africa.jpg?s=612x612&w=0&k=20&c=DE3QozYXTERV4oQOz6z3ik8nKSKl4yH0-838l-NTOp4=" alt="Ceremonial jewelry">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Ceremonial jewelry for rites of passage</p>
@@ -1913,9 +1911,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-fan"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1483312432/photo/olojo-festival.jpg?s=612x612&w=0&k=20&c=80W1_oLU3i1dxeylK2acMzCQBgat_A__WuLTiIAuHeQ=" alt="Ritual fans">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Ritual fans used in purification ceremonies</p>
@@ -1923,9 +1919,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-ankh"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1041205872/photo/religious-altar-of-umbanda.jpg?s=612x612&w=0&k=20&c=SKcCxZSeLz15tWCJnlbDnPo7HMmSLafHD6kuN_y_GmU=" alt="Ancestral veneration">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Symbolic artifacts for ancestral veneration</p>
@@ -1933,9 +1927,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-hat-cowboy"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1490945863/photo/africa-nzem-berom-festival-nigeria.jpg?s=612x612&w=0&k=20&c=3wGd6qN_ykiuPNf951hkqsCKvYBQUiF34VH1h606L-M=" alt="Ceremonial headdresses">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Ceremonial headdresses for special occasions</p>
@@ -1943,9 +1935,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-bell"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/468707553/photo/yak-bell.jpg?s=612x612&w=0&k=20&c=h0TvvZC76QA9RpbEa54Ypzp9SsFAt1R4dJ5PdRedCOA=" alt=" alt="Ritual bells">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Ritual bells used in dance ceremonies</p>
@@ -1953,9 +1943,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-hand-sparkles"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1283676825/photo/african-male-traditional-healer-known-as-a-sangoma-or-witch-doctor-performing-a-spiritual.jpg?s=612x612&w=0&k=20&c=g6NKa3YDjpZVq5VkECEWymY1NTlDxbvzkH-BZYlz9WQ="Blessing artifacts">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Blessing artifacts for community events</p>
@@ -1963,9 +1951,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-vial"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/861181022/photo/traditional-pitchers-and-pots-at-handicrafts-local-market-kei-afer-omo-valley-ethiopia.jpg?s=612x612&w=0&k=20&c=qo-pVLrJHW1KtYYoa5aAW3sg63MJi0PtIF7qWZNE6vA=" alt="Sacred containers">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Containers for sacred medicinal substances</p>
@@ -1995,9 +1981,7 @@
                             <!-- 10 image placeholders -->
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-tshirt"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1792685359/photo/portrait-of-a-young-african-man-with-dreadlocks-and-elegant-suit.jpg?s=612x612&w=0&k=20&c=s_MA6RWQ2BsEU4_U7-RgVnfvQoL1gqp_ypJ8vO3YrmQ=" alt="Traditional garments">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Traditional woven garments for ceremonies</p>
@@ -2005,9 +1989,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-ring"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1481909858/photo/focus-on-the-hand-of-african-woman-selling-souvenirs-in-the-mursi-tribe-village-omo-valley.jpg?s=612x612&w=0&k=20&c=nUaO2VJSfZ2VJUckKkzI9xAQP_Q5U-f29kKMzyt_DHU=" alt="Symbolic patterns">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Symbolic patterns representing clan identities</p>
@@ -2015,9 +1997,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-cloud-rain"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1442529086/photo/naive-hand-painted-african-geometric-pattern-on-rough-rendered-wall.jpg?s=612x612&w=0&k=20&c=ZbmES6ptE2f4rb7fFPR6MyAtxFAFJaon6CKIi_4W024=" alt="Rain-inspired motifs">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Rain-inspired motifs in textile designs</p>
@@ -2025,9 +2005,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-seedling"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1162356110/photo/leather-necklaces-african-craft.jpg?s=612x612&w=0&k=20&c=WIa_JoEQOfXHzjubbwWkxJWo_3KjhzL9iCNp67oIgps=" alt="Fertility symbols">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Fertility symbols in ceremonial cloths</p>
@@ -2035,9 +2013,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-wind"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1365582771/photo/tanner-working-in-the-dye-pots-at-chouara-tannery-painting-animal-leathers-fez-morocco.jpg?s=612x612&w=0&k=20&c=OrVKGB6q_6jAXAqxniLr_bC5iZ8kfnZ3IklrksFT-es=" alt="Natural dyes">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Natural dye extraction techniques</p>
@@ -2045,9 +2021,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-palette"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1193746433/photo/young-african-woman-weaving-a-colorful-scarf-ethiopia-east-africa.jpg?s=612x612&w=0&k=20&c=pSBVDMaFm_U-23zdyENPKd285lkXmCfjAC4ik4MAdIk=" alt="Weaving loom">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Traditional weaving loom setup</p>
@@ -2055,9 +2029,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-ruler-horizontal"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1039652496/photo/unidentified-benin-man-shows-special-tricks-in-a-school-of-predictions-in-ekpa-village-one-of.jpg?s=612x612&w=0&k=20&c=w1dz7BrJSehvq_XtZeLzdVIQL6fEaLttMp9HWU3LPkw=" alt="Pattern creation">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Pattern measurement and creation process</p>
@@ -2065,9 +2037,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-water"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/854579202/photo/textiles-on-display-at-an-outdoor-african-american-art-fair.jpg?s=612x612&w=0&k=20&c=iC0a-kQOlx281c9MKnZGQrjJIbWSDkGXSJSMWA79pKw=" alt="Water symbols">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Water symbol patterns in daily wear</p>
@@ -2075,9 +2045,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-sun"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1093269414/photo/handmade-collection-of-terracotta-sun-decoration.jpg?s=612x612&w=0&k=20&c=3H8TaHj0r1gs97tVGxI4gAcJ_YsVtJzFHYbyAOpKriE=" alt="Sun motifs">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Sun motifs representing life and energy</p>
@@ -2085,9 +2053,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-feather"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/526151745/photo/card-back-design-with-crowned-cranes-reversible-19th-century.jpg?s=612x612&w=0&k=20&c=vT0ZjovgnY889JRWRgDXVlJUr5_PXPd924y_iLqkVFQ=" alt="Feather designs">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Feather-inspired border designs</p>
@@ -2117,9 +2083,7 @@
                             <!-- 10 image placeholders -->
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-mortar-pestle"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1257719302/photo/close-up-hands-of-a-ari-tribe-woman.jpg?s=612x612&w=0&k=20&c=704gwHyx38uKVK_Mu4SkBRxkU1FQbqUFmcz5YaQ0Iio=" alt="Clay preparation">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Clay preparation and purification process</p>
@@ -2127,9 +2091,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-hands"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1296112757/photo/potter-creating-a-cup-in-his-workshop-in-kpalim%C3%A9-togo-west-africa.jpg?s=612x612&w=0&k=20&c=fhtmiAYpb-zEtthkX0XwvVTc2zMxix2-hx3xCSULlz8=" alt="Hand-coiling">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Hand-coiling technique for vessel formation</p>
@@ -2137,9 +2099,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-jug"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/113549116/photo/swazi-pottery.jpg?s=612x612&w=0&k=20&c=HgBvsnQcfPjhnLXtUOCbZDne_jlPoqgjxacDiQs4nTA=" alt="Water storage">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Water storage vessels with unique shapes</p>
@@ -2147,9 +2107,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-fire"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/524029625/photo/arak-distillery-at-aimere.jpg?s=612x612&w=0&k=20&c=Z-46rB_FrUX7YZsI949ZadmjpXrsLSBsJob6zpBISGA=" alt="Wood-firing">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Traditional wood-firing techniques</p>
@@ -2157,9 +2115,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-smoking"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/503188881/photo/the-work-of-bronze-in-burkina-faso.jpg?s=612x612&w=0&k=20&c=dbcWnV_FMTZLb8nHvzIZDr3h-n4kR-atgnz7oF6B_ZE=" alt="Smoking process">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Smoking process for black pottery creation</p>
@@ -2167,9 +2123,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-bowl-food"></i>
-                                    </div>
+                                    <img src="https://images.unsplash.com/photo-1692540847659-00f18120ab42?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGFmcmljYW4lMjBwb3RzfGVufDB8fDB8fHww" alt="Ceremonial dishes">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Ceremonial serving dishes</p>
@@ -2177,9 +2131,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-wine-bottle"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1304612939/photo/hamar-tribe-pottery.jpg?s=612x612&w=0&k=20&c=yl0hj67nOn6KMznq8bG4KW__Dm6_F6bNBl6ieiAc4VQ=" alt="Beverage vessels">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Specialized vessels for traditional beverages</p>
@@ -2187,9 +2139,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-vial"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/861181022/photo/traditional-pitchers-and-pots-at-handicrafts-local-market-kei-afer-omo-valley-ethiopia.webp?a=1&b=1&s=612x612&w=0&k=20&c=qop3Sx8dUsidOGAgcjMkWR_WmPOedGqgvf5hfgb3reQ=" alt="Ritual containers">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Ritual containers for medicinal preparations</p>
@@ -2197,9 +2147,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-egg"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/467228678/photo/tiebele.jpg?s=612x612&w=0&k=20&c=4tdAIDPzhTeRdErvBCOsMFCi5ms3qpKBIf9qgulsRQM=" alt="Incised decoration">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Incised decoration techniques</p>
@@ -2207,9 +2155,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-paintbrush"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/2164440584/photo/cropped-hand-of-man-painting-wood.jpg?s=612x612&w=0&k=20&c=BtFFi4wH-0qzsv5RsT53Z0EArBMjidRCPCYBx1YGR4w=" alt="Pigment application">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Natural pigment application methods</p>
@@ -2239,9 +2185,7 @@
                             <!-- 10 image placeholders -->
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-seedling"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1210440742/photo/colorful-ears-of-dried-corn-and-pile-of-dried-beans.jpg?s=612x612&w=0&k=20&c=VkHpRcurKJyjBX6BEQs9gvDTYWU5_mrMPitKhVI5-8s=" alt="Seed preservation">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Traditional seed selection and preservation</p>
@@ -2249,9 +2193,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-tractor"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/2149566534/photo/senior-woman-working-with-traditional-hoe-in-corn-maize-field-in-rural-african-setting.jpg?s=612x612&w=0&k=20&c=uE4wyLWFhHbJCtL4JJImZVEULFaYScBO-EpgOsx-ulo=" alt="Cultivation">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Hand-tool cultivation techniques</p>
@@ -2259,9 +2201,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-leaf"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/990488094/photo/hands-of-the-farmer-basil-plantation.jpg?s=612x612&w=0&k=20&c=F4pE_7DSteFsKVd_j1Gt_zZIJ5Bcwp41GlxyoaWBHZ4=" alt="Intercropping">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Intercropping methods for soil preservation</p>
@@ -2269,9 +2209,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-recycle"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/2160865197/photo/close-up-image-of-farmer-examining-corn.jpg?s=612x612&w=0&k=20&c=3N_U_Jgx8MmLcYQEl_7cbj1NC1xNYUdmG9eK9Z-52gw=" alt="Crop rotation">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Crop rotation systems</p>
@@ -2279,9 +2217,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-water"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/2023073669/photo/the-red-oasis-timimoun-in-algeria.jpg?s=612x612&w=0&k=20&c=kABI2Ao8ZvwVWxQGyhBc9qzdwNWn6BWMEy-VFgRmP7M=" alt="Water conservation">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Water conservation techniques</p>
@@ -2289,9 +2225,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-compost"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/866688720/photo/african-american-woman-cupping-soil-in-her-garden.jpg?s=612x612&w=0&k=20&c=KyDYTA0K4rEe2gOZ-z86kVob7OhCNz-3eQlEELXrcGM=" alt="Organic fertilization">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Organic fertilization methods</p>
@@ -2299,9 +2233,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-cloud-sun"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/155145833/photo/black-hands-with-plants.jpg?s=612x612&w=0&k=20&c=O0SvFjnB-B36EON24W6mOR2RmyjwExP6Aevnj3eGQ64=" alt="Seasonal calendars">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Seasonal planting calendars</p>
@@ -2309,9 +2241,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-wind"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/615720764/photo/sprouting-beans-in-an-african-village.jpg?s=612x612&w=0&k=20&c=cTV-h9pz5GWZCT5ePuVwTMVp7ZABJ2mwz9OMfLicymA=" alt="Windbreak techniques">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Windbreak techniques for soil protection</p>
@@ -2319,9 +2249,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-bugs"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/1144295900/photo/young-muscular-african-man-watering-lettuce-crops-with-watering-cans-in-a-agricultural-field.jpg?s=612x612&w=0&k=20&c=XV4coFeksIaaeJGDFn9cRsYzct45OEjbvUf-ke4XubI=" alt="Pest control">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Natural pest control methods</p>
@@ -2329,9 +2257,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <div class="placeholder-icon">
-                                        <i class="fas fa-hand-holding-seedling"></i>
-                                    </div>
+                                    <img src="https://media.istockphoto.com/id/2161794942/photo/local-people-working-on-rice-fields-madagascar.jpg?s=612x612&w=0&k=20&c=cqsV9nsVQ3EAYPSzcFCh0yuSoX1WEsJF0iGxeUVkG_s=" alt="Harvesting">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Harvesting and storage techniques</p>
@@ -2787,7 +2713,7 @@
                             <span>Paga Sacred Crocodile Ponds</span>
                         </div>
                         <p>The annual Fao Festival celebrates the sacred relationship between the Kasena people and crocodiles. Witness traditional dances, rituals, and the feeding of the sacred crocodiles.</p>
-                        <button class="register-btn">Register to Attend</button>
+                        <button class="register-btn" onclick="openEventRegistration('Fao Festival', 'June 15, 2025', 'Paga Sacred Crocodile Ponds')">Register to Attend</button>
                     </div>
                 </div>
                 
@@ -2812,7 +2738,7 @@
                             <span>Kasena Heritage Museum</span>
                         </div>
                         <p>Learn the ancient art of Kasena weaving from master artisans. Create your own traditional textile using authentic techniques and natural dyes. All materials provided.</p>
-                        <button class="register-btn">Register to Attend</button>
+                        <button class="register-btn" onclick="openEventRegistration('Traditional Weaving Workshop', 'June 22, 2025', 'Kasena Heritage Museum')">Register to Attend</button>
                     </div>
                 </div>
                 
@@ -2837,7 +2763,7 @@
                             <span>Tongo Hills Amphitheater</span>
                         </div>
                         <p>Gather under the stars for an evening of traditional Kasena storytelling. Elders will share myths, legends, and historical accounts passed down through generations.</p>
-                        <button class="register-btn">Register to Attend</button>
+                        <button class="register-btn" onclick="openEventRegistration('Ancestral Storytelling Night', 'July 5, 2025', 'Tongo Hills Amphitheater')">Register to Attend</button>
                     </div>
                 </div>
                 
@@ -2862,9 +2788,61 @@
                             <span>Tongo Hills</span>
                         </div>
                         <p>The Damba Festival marks the beginning of the harvest season. Experience traditional drumming, dancing, and ceremonies at the sacred Tongo Hills. This is the most important cultural event of the year.</p>
-                        <button class="register-btn">Register to Attend</button>
+                        <button class="register-btn" onclick="openEventRegistration('Damba Festival', 'July 18, 2025', 'Tongo Hills')">Register to Attend</button>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Event Registration Form -->
+            <div id="eventRegistrationSection" class="event-registration-form" style="display: none;">
+                <div class="registration-header">
+                    <h3 id="eventRegistrationTitle">Event Registration</h3>
+                    <p id="eventRegistrationDetails"></p>
+                </div>
+                
+                <form id="eventRegistrationForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name:</label>
+                            <input type="text" id="firstName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name:</label>
+                            <input type="text" id="lastName" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone:</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="attendees">Number of Attendees:</label>
+                        <select id="attendees" class="form-control" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6+</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="specialRequirements">Special Requirements:</label>
+                        <textarea id="specialRequirements" class="form-control" rows="3"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Submit Registration</button>
+                    <button type="button" class="exhibit-btn" style="margin-top: 15px;" onclick="closeEventRegistration()">Cancel</button>
+                </form>
             </div>
         </main>
     </div>
@@ -3557,14 +3535,46 @@
             renderCalendar();
         }
         
-        // Event registration buttons
-        document.querySelectorAll('.register-btn').forEach(button => {
-            button.addEventListener('click', function(e) {
+        // Event Registration Functionality
+        function openEventRegistration(eventName, eventDate, eventLocation) {
+            const registrationSection = document.getElementById('eventRegistrationSection');
+            const title = document.getElementById('eventRegistrationTitle');
+            const details = document.getElementById('eventRegistrationDetails');
+            
+            title.textContent = eventName + " Registration";
+            details.textContent = `Date: ${eventDate} | Location: ${eventLocation}`;
+            
+            registrationSection.style.display = 'block';
+            registrationSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function closeEventRegistration() {
+            document.getElementById('eventRegistrationSection').style.display = 'none';
+        }
+        
+        // Handle event registration form submission
+        const eventRegistrationForm = document.getElementById('eventRegistrationForm');
+        if(eventRegistrationForm) {
+            eventRegistrationForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                const eventTitle = this.closest('.event-card').querySelector('.event-title').textContent;
-                alert(`Thank you for your interest in "${eventTitle}"! We've registered you for this event and will send confirmation details to your email.`);
+                
+                // Get form data
+                const formData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    attendees: document.getElementById('attendees').value
+                };
+                
+                // Show success message
+                alert('Thank you for registering for the event! We have sent a confirmation to your email.');
+                
+                // Reset form
+                this.reset();
+                closeEventRegistration();
             });
-        });
+        }
     </script>
 </body>
 </html>
