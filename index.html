@@ -171,15 +171,23 @@
         
         .logo-img {
             height: 70px;
-            width: auto;
+            width: 70px;
             margin-right: 15px;
             border-radius: 4px;
             border: 2px solid var(--gold);
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
             transition: all 0.3s ease;
+            overflow: hidden;
         }
         
-        .logo-img:hover {
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .logo:hover .logo-img {
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
         }
@@ -696,7 +704,7 @@
 
         .mission-statement::before,
         .mission-statement::after {
-            content: """;
+            content: """; 
             font-size: 4rem;
             color: var(--gold);
             position: absolute;
@@ -1279,7 +1287,7 @@
         
         .calendar-grid {
             display: grid;
-            grid-template-columns: repeat(7, 1fr));
+            grid-template-columns: repeat(7, 1fr);
             gap: 5px;
         }
         
@@ -1574,6 +1582,7 @@
             
             .logo-img {
                 height: 50px;
+                width: 50px;
             }
             
             .logo-text {
@@ -1709,7 +1718,7 @@
         <div class="container header-content">
             <div class="logo" id="homeLink">
                 <div class="logo-img">
-                    <i class="fas fa-landmark" style="font-size: 3rem; color: var(--gold); padding: 10px;"></i>
+                    <img src="https://images.unsplash.com/photo-1655102718560-19dd4971f87b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8QWZyaWNhJTIwbWFwJTIwbG9nbyUyMGRlc2lnbnxlbnwwfHwwfHx8MA%3D%3D" alt="Kasena Heritage Museum Logo">
                 </div>
                 <div class="logo-text">Kasena Museum</div>
             </div>
@@ -2041,7 +2050,7 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-img">
-                                    <img src="https://media.istockphoto.com/id/1283676825/photo/african-male-traditional-healer-known-as-a-sangoma-or-witch-doctor-performing-a-spiritual.jpg?s=612x612&w=0&k=20&c=g6NKa3YDjpZVq5VkECEWymY1NTlDxbvzkH-BZYlz9WQ="Blessing artifacts">
+                                    <img src="https://images.unsplash.com/photo-1283676825?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8QWZyaWNhbiUyMGhlYWxlcnyw=" alt="Blessing artifacts">
                                 </div>
                                 <div class="gallery-desc">
                                     <p>Blessing artifacts for community events</p>
@@ -2795,7 +2804,8 @@
                 <p>Experience the vibrant traditions and celebrations of the Kasena people</p>
             </div>
         </section>
-                    <h2 class="section-title">Upcoming Events</h2>
+        <main class="container">
+            <h2 class="section-title">Upcoming Events</h2>
             
             <div class="events-container">
                 <div class="event-card">
@@ -3535,7 +3545,19 @@
         const closeBtn = document.querySelector('.close-btn');
         const hotelBookingForm = document.getElementById('hotelBookingForm');
         
+        // Function to reset booking form
+        function resetBookingForm() {
+            hotelBookingForm.reset();
+            document.querySelectorAll('.room-type').forEach(room => {
+                room.classList.remove('selected');
+            });
+            document.querySelectorAll('.payment-method').forEach(method => {
+                method.classList.remove('selected');
+            });
+        }
+        
         function openBookingModal(hotelName, price) {
+            resetBookingForm();
             document.getElementById('hotelName').value = hotelName;
             // Set minimum date for booking
             const today = new Date();
@@ -3592,8 +3614,10 @@
             };
             
             alert(`Thank you for your booking at ${formData.hotel}!\nWe have sent a confirmation to ${formData.email}.`);
+            
+            // Reset form and close modal
+            resetBookingForm();
             closeBookingModal();
-            this.reset();
         });
         
         // Set home as default page
